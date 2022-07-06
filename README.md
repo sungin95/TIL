@@ -25,3 +25,9 @@ $ git remote add origin [프로젝트 주소]
 $ git remote -v
 $ git push origin master
 
+
+
+## 버전 관리 팁
+
+[버전 관리](https://github.com/sungin95/TIL/blob/master/0706%20%EB%B2%84%EC%A0%84%20%EA%B4%80%EB%A6%AC.md)
+
