@@ -1,5 +1,23 @@
 # 로컬 저장소 만들기(연습)
 
+## 핵심 명령어
+
+$ git init
+
+(최초 1회 아래 내용을 입력해야 한다. 
+
+$ git config --global user.email "이메일@주소"
+
+$ git config ==global user.name "네임")
+
+(파일을 만들고 내용을 입력후)
+
+$ git add .
+
+$ git commit -m "제목 입력"
+
+($ git commit 만 사용하면 vscode 에서 새로운 창이 뜨는데 여기서 제목을 더 디테일하게 적을 수 있다. )
+
 ## 1. 프로젝트 폴더 만들기(~11:00)
 
 - 오늘 날짜의 폴더 생성하기
