@@ -1,2 +1,4 @@
-a = list(range(6, 0, -1))
-print(a)
+str = input()
+n = len(str)
+for i in str:
+    print(i)
