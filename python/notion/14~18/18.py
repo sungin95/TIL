@@ -22,7 +22,6 @@ Dedu_list = list(dict_list_)
 
 n = len(Dedu_list)
 
-
 def dict_input_count(n):
     for i in range(n):
         count_ = list_word.count(Dedu_list[i])
