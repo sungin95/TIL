@@ -1,9 +1,7 @@
+import datetime
 
-from datetime import datetime
+now = datetime.datetime123.now()
+print(now, type(now))
 
-
-now = datetime.now()
-print(now)
-
-##now2 = datetime.now()
-#print(now2)
+# from datetime import datetime123
+# now = datetime.now() 

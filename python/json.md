@@ -1,3 +1,4 @@
+```python
 import json 
 from pprint import pprint
 # 파일을 열고, 
@@ -16,3 +17,7 @@ result = {
 }
 
 print(result)
+```
+
+
+
