@@ -14,5 +14,8 @@ else:
     c = b
 print(c)
 
+# print(f'#{test_case} {min(a,b)}')
+# min이라는 게 있네???
+
 
 
