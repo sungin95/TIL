@@ -1,5 +1,6 @@
 class Person:
     # 클래스 변수(속성)
+    type = '싸람'
     species = '사람'
 
     # 인스턴스 메서드
@@ -11,4 +12,5 @@ iu = Person()
 iu.greeting()
 
 # 클래스 변수(속성)
+print((Person.type))
 print(Person.species)

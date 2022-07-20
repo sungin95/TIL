@@ -15,3 +15,5 @@ print(hong.info())
 print(hong.name)
 print(hong.age)
 print(type(hong))
+
+
