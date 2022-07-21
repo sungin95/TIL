@@ -6,13 +6,12 @@ for test_case in range(1, T + 1):
     N = int(input())
     k = 1
     KN = 0
-    write_N = ''
+    write_N = set()
     len_set_N = 0
-    while len_set_N != 10:
+    while len(write_N) != 10:
         KN = N*k
         k += 1
-        m = str(KN)
-        for i in m:
+        for i in str(KN):
             write_N += i
-            len_set_N = len(set(write_N))
     print(f"#{test_case} {KN}")
+
