@@ -1,3 +1,6 @@
+import sys
+sys.stdin = open("2019.txt", "r")
+
 num = int(input())
 
 t = 0
