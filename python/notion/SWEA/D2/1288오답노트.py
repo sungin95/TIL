@@ -6,12 +6,9 @@ for test_case in range(1, T + 1):
     N = int(input())
     N1 = N
     numbers = set()
-    
     while True:
-
         for n in str(N):
             numbers.add(n)
-
         if len(numbers) == 10:
             break
         N += N1
