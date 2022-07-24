@@ -8,6 +8,10 @@
 
 # 파이썬 직접 해 보기!
 
-[code_up문제](https://github.com/sungin95/TIL/tree/master/python/code_up)
+[**멀캠_실습문제**](https://github.com/sungin95/TIL/tree/master/python/%EC%BD%94%EB%93%9C%ED%85%8C%EC%8A%A4%ED%8A%B8(%EC%97%B0%EC%8A%B5)/%EB%A9%80%EC%BA%A0_%EC%8B%A4%EC%8A%B5%EB%AC%B8%EC%A0%9C)
 
-[code_up새롭게 배운 거 정리](https://github.com/sungin95/TIL/blob/master/python/code_up/%EB%AC%B8%ED%92%80%EC%95%8C.md)
+[code_up문제](https://github.com/sungin95/TIL/tree/master/python/%EC%BD%94%EB%93%9C%ED%85%8C%EC%8A%A4%ED%8A%B8(%EC%97%B0%EC%8A%B5)/code_up)
+
+[code_up새롭게 배운 거 정리](https://github.com/sungin95/TIL/blob/master/python/%EC%BD%94%EB%93%9C%ED%85%8C%EC%8A%A4%ED%8A%B8(%EC%97%B0%EC%8A%B5)/code_up/%EB%AC%B8%ED%92%80%EC%95%8C.md)
+
+[SWEA(D1~D2)](https://github.com/sungin95/TIL/tree/master/python/%EC%BD%94%EB%93%9C%ED%85%8C%EC%8A%A4%ED%8A%B8(%EC%97%B0%EC%8A%B5)/SWEA)
