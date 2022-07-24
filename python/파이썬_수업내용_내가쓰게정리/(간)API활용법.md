@@ -1,0 +1,105 @@
+# API활용법(기본)
+
+```python
+import requests
+
+url = "https://api.bithumb.com/public/ticker/BTC_KRW"
+
+response = requests.get(url)
+
+data = response.json()
+```
+
+requests.get를 이용하여 주소창을 가져오고 json을 해 주면 data가 나온다. 
+
+예시)
+
+```
+{'status': '0000', 'data': {'opening_price': '29340000', 'closing_price': '29735000', 'min_price': '29184000', 'max_price': '29844000', 'units_traded': '982.60901489', 'acc_trade_value': '28980628572.9351', 'prev_closing_price': '29335000', 'units_traded_24H': '3019.87600288', 'acc_trade_value_24H': '89935105706.1602', 'fluctate_24H': '-341000', 'fluctate_rate_24H': '-1.13', 'date': '1658620432403'}}
+```
+
+## 원하는 정보 추출하기
+
+```python
+print(data.keys())
+# dict_keys(['status', 'data'])
+print(data.get('data'))
+# {'opening_price': '29340000', 'closing_price': '29712000', 'min_price': '29184000', 'max_price': '29844000', 'units_traded': '986.73007112', 'acc_trade_value': '29103124076.6281', 'prev_closing_price': '29335000', 'units_traded_24H': '3019.35242122', 'acc_trade_value_24H': '89917891427.768', 'fluctate_24H': '-361000', 'fluctate_rate_24H': '-1.20', 'date': '1658620707337'}
+print(data.get('data').get('closing_price'))
+# 29715000
+```
+
+# 키 발급 받기
+
+인터넷 검색창에 (해당 사이트 + api)라고 치면 개발자 페이지가 나온다. 
+
+예시) "movie api" => [The Movie Database (TMDB) API](https://developers.themoviedb.org/3)
+
+"youtube api" => [YouTube Data API - Google Developers](https://developers.google.com/youtube/v3)
+
+우선 해당 페이지에 가서 개발자 키를 받는다. 
+
+ex TMDB 해당 사이트 로그인 후
+
+1. `프로필` > `설정` > `API` 로 이동 후 API키 요청 (https://themoviedb.org/settings/api/request?language=ko)
+
+   ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f03a4595-a749-440b-b98e-51c5058e0033/Untitled.png)
+
+2. `Developer` 선택 > 약관 동의
+
+3. 키 발급 요청
+
+   1. `이용 형태` > 웹사이트
+   2. `어플리케이션 이름` > 자유롭게 작성
+   3. `어플리케이션 URL` > `http://localhost:8080`
+   4. `어플리케이션 개요` > 15자 이상 자세하게 작성 (간략하게 작성시 신청 반려)
+   5. 나머지 사항 > 자유롭게 작성
+
+   ![Untitled](C:\Users\dlrke\OneDrive\문서\GitHub\국비지원학원\TIL\python\파이썬_수업내용\0722.assets\Untitled-16586230026452-16586230102304.png)
+
+4. `API 키 (v3 auth)` 발급 완료
+
+5. https://developers.themoviedb.org/3 에서 사용법 확인
+
+
+
+
+
+# 사이트에서 원하는 정보 불러오기
+
+TMDB: https://developers.themoviedb.org/3/
+
+YouTube: https://developers.google.com/youtube/v3
+
+해당 developers 페이지에 들어가서 내가 찾고자 하는 기능을 찾아 주소를 (path)에 넣어준다. 옵션은 params에 넣어준다. 
+
+```python
+import requests
+
+def credits(title):
+    BASE_url = "https://api.themoviedb.org/3" # 사이트를 보면 적혀있다. 
+    # ex) YouTube: GET https://www.googleapis.com/youtube/v3/
+    path = f'/search/movie'  # 원하는 기능 
+    params = { # 옵션
+        'api_key': "glkfdjlkfgksfdgjldfkj" , # 키값은 이곳에
+        'language': 'ko-KR',
+        'query' : f"{title}"
+    } 
+    response = requests.get(BASE_url + path, params=params).json()
+    movies = response.get('results')
+```
+
+이렇게 path와 params를 채워지면 내가 원하는 데이터를 불러올 수 있다. 
+
+
+
+
+
+
+
+
+
+
+
+
+

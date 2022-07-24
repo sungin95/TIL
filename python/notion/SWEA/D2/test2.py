@@ -1,3 +1,2 @@
-c = [1, 2, 3,4]
-c.clear()
-print(c)
+sum = 5
+print(sum(1, 2, 3))
