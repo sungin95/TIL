@@ -21,3 +21,5 @@ for test_case in range(1, T + 1):
             profit += (MAX - N[i])
         over_days = MAX_i
     print(f'#{test_case} {profit}')
+    
+# 아무리 봐도 코드에 문제가 없는데. runtimeerror가 뜬다. 이유를 모르겠다. 
