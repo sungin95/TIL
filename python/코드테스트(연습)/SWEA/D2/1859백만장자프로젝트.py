@@ -1,3 +1,4 @@
+"""
 # 함수 max를 통해 max인 날짜를 찾으면 
 # 그 이전 날까지 구매를 합니다. (buy_days)
 # 그리고 맥스인 날에 모두 판매를 해 이익을 얻고(profit)
@@ -26,3 +27,20 @@ for test_case in range(1, T + 1):
             profit += (MAX - N[i])
         over_days = MAX_i # 물건을 다 팔고 나면 현재 max까지의 날들은 지나간날( over_days)로 합니다. 
     print(f'#{test_case} {profit}')
+"""
+# 문제를 뒤에서부터 해결하니까 더 짧아졌네요 ㅎㅎ
+import sys
+sys.stdin = open("1859.txt", "r")
+T = int(input())
+for test_case in range(1, T + 1):
+    n = int(input())  
+    N_first = list(reversed(list(map(int, input().split()))))
+    profit = 0 
+    max = N_first[0]
+    for i in N_first:
+        if i <= max:
+            profit += (max-i)
+        else:
+            max = i
+    print(f'#{test_case} {profit}')
+
