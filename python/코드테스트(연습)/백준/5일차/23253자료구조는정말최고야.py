@@ -29,4 +29,6 @@ if check_ == True:
 elif check_ == False:
     print('No')
 
-
+"""
+선생님 코드는 그 체크 하는 부분을 while과 pop을 사용하여 비교해 주었다. 
+"""
