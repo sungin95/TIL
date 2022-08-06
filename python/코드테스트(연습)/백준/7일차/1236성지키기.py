@@ -1,29 +1,50 @@
 import sys
 sys.stdin = open("1236.txt", "r")
-from pprint import pprint
-N, M = map(int, input().split())
-rectangle = []
-cnt = 0
+N, M= map(int, input().split())
+
+numbers = []
+hor = []# i를 활용하여 몇번째 세로 줄인지 확인.
+vert = [] # cnt를 이용하여 몇번째 가로 줄인지 체크
 for i in range(N): 
-    list_2 = []
+    cnt = 0
     data = input()
-    if data.find("X") == -1:
-        cnt += 1
-    for j in data:
-        list_2.append(j)
-    rectangle.append(list_2)    
-cnt2 = 0
-for i in range(M):
-    a = []
-    for j in range(N):
-        a += (rectangle[j][i])
-    else:
-        try:
-            if a.index("X") == -1:
-                pass
-        except:
-            cnt2 += 1
-print(max(cnt, cnt2))
+    for char in data:
+        if char == "X":
+            hor.append(i) # hor(x)에는 i(위치 인덱스와 같은 기능)을 저장한다. 
+            vert.append(cnt) # vert(y)에는 cnt(위치 인덱스와 같은 기능)을 저장한다. 
+        cnt += 1 # 위치(몇번째  가로 줄인지)를 알려주는 용도로 사용중.
+a = N - (len(set(hor))) # 겹치는 위치 set를 통해 제거. 
+b = M - (len(set(vert)))
+print(max(a,b)) # 이중 큰 값이 최소 값이다. 
+       
+
+
+# import sys
+# sys.stdin = open("1236.txt", "r")
+# from pprint import pprint
+# N, M = map(int, input().split())
+# rectangle = []
+# cnt = 0
+# for i in range(N): 
+#     list_2 = []
+#     data = input()
+#     if data.find("X") == -1:
+#         cnt += 1
+#     for j in data:
+#         list_2.append(j)
+#     rectangle.append(list_2)    
+# cnt2 = 0
+# for i in range(M):
+#     a = []
+#     for j in range(N):
+#         a += (rectangle[j][i])
+#     else:
+#         try:
+#             if a.index("X") == -1:
+#                 pass
+#         except:
+#             cnt2 += 1
+# print(max(cnt, cnt2))
 
 
 
