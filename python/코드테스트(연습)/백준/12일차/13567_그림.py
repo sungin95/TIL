@@ -21,7 +21,7 @@ for _ in range(n):
     else:
         location[1]  += current[1]*int(num)
         location[0]  += current[0]*int(num)
-        if not 0 <= location[0] and location[0] <= M and 0 <= location[1] and location[1] <= M:
+        if 0 > location[0] or location[0] > M or 0 > location[1] or location[1] > M:
             check = False
 if check == True:
     print(f"{location[1]} {location[0]}")

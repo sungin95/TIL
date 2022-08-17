@@ -169,9 +169,180 @@ SELECT * FROM examples;
 
 
 
+```
+환경설정
+sql
+https://hphk-edu.notion.site/SQLite-62e2a6ee8e4f40fa97b2acbfbd74bd6a
+파일 2개 다운로드
+해당 파일을 환경변수에 경로 저장
+winpty sqlite3 커맨드를 sqlite3로 변경하기
+1. code ~/.bashrc
+2. alias sqlite3="wiinpty sqlite3"
+3. source ~/.bashrc
+.quit
+
+.sqlite3  임시환경을 만든다. 
+.sqlite3 healthcare.sqlte3 새로운 영구적인 파일을 만든다. 
+database가 없으면 여기는 vscode환경이라는 것을 기억하자. 이걸 도와주는 환경이 안깔려 있는 거다. 
+.csv형식은 database에서 해당형식으로 옮긴것이다? 아직 무슨 말인지 잘 모르겠다. 
+```
 
 
 
+
+
+```sqlite
+-- classmates라는 이름의 테이블 생성
+CREATE TABLE classmates (
+    id INTEGER PRIMARY KEY, 
+    name TEXT
+);
+CREATE TABLE classmates (
+    name TEXT NOT NULL,
+    age INT NOT NULL,
+    address TEXT NOT NULL
+);
+CREATE TABLE members(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+.database
+.import hellodb.csv examples
+.headers on 
+.mode column
+.schema healthcare
+-- 데이터를 추가
+.mode csv
+
+-- 같은 디렉토리에 있는 users.csv 파일을 users 테이블로
+.import users.csv users
+
+-- 테이블 목록 조회
+.tables
+
+-- 특정 테이블 스키마 조회
+.schema classmates
+
+-- 값 추가
+INSERT INTO classmates VALUES (1, '조세호');
+INSERT INTO classmates (name, age) VALUES ('홍길동', 23);
+INSERT INTO classmates (name, age, address) VALUES ('홍길동', 23, '서울');
+INSERT INTO classmates VALUES 
+('홍길동', 30, '서울'), 
+('김철수', 30, '제주'),
+('이호영', 26, '인천'),
+('박민희', 29, '대구'),
+('최혜영', 28, '전주');
+INSERT INTO classmates VALUES ('주세환', 40, '대전'); 
+INSERT INTO members VALUES 
+(10, '홍길동'), 
+(11, '김철수'),
+(12, '이호영'),
+(15, '박민희'),
+(18, '최혜영');
+
+-- 테이블 조회
+SELECT * FROM classmates;
+SELECT rowid, * FROM classmates;
+SELECT rowid, name FROM classmates;
+SELECT rowid, name FROM classmates LIMIT 2;
+SELECT rowid, name FROM classmates LIMIT 1 OFFSET 2;
+SELECT * FROM classmates WHERE address='서울';
+SELECT name FROM classmates WHERE age >= 30;
+SELECT DISTINCT age FROM classmates;
+SELECT rowid, * FROM classmates;
+SELECT rowid, name FROM classmates LIMIT 100;
+
+-- 삭제 
+DELETE FROM classmates WHERE rowid=5;
+DELETE FROM members WHERE rowid=5;
+
+-- 수정
+UPDATE classmates SET name='홍길동', address='제주도' WHERE rowid=5;
+
+-- 테이블 삭제
+DROP TABLE classmates;
+
+
+SELECT weight*10000/(height*height) AS BMI, weight, height FROM healthcare LIMIT 5;
+
+
+
+```
+
+
+
+|      |  구문  |                             예시                             |
+| :--: | :----: | :----------------------------------------------------------: |
+|  C   | INSERT | INSERT INTO 테이블이름 (컬럼1, 컬럼2, ...) VALUES (값1, 값2); |
+|  R   | SELECT |             SELECT * FROM 테이블이름 WHERE 조건;             |
+|  U   | UPDATE |    UPDATE 테이블이름 SET 컬럼1=값, 컬럼2=값2 WHERE 조건;     |
+|  D   | DELETE |              DELETE FROM 테이블이름 WHERE 조건;              |
+
+
+
+```sqlite
+-- SQLite
+
+-- 테이블 생성
+-- 정호,유,40,전라북도,016-7280-2855,370
+CREATE TABLE users (
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    country TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    balance INTEGER NOT NULL
+);
+
+-- 데이터를 추가
+.mode csv
+-- 같은 디렉토리에 있는 users.csv 파일을 users 테이블로
+.import users.csv users
+
+
+-- 쿼리
+
+-- 30세 이상인 사람들
+SELECT * FROM users WHERE age >= 30;
+-- 30세 이상인 사람들의 이름
+SELECT first_name FROM users WHERE age >= 30;
+-- 30세 이상인 사람들의 이름 3명만
+SELECT first_name FROM users WHERE age >= 30 LIMIT 3;
+-- 30세 이상이고 성이 김인 사람
+SELECT age, first_name FROM users WHERE age >= 30 AND last_name = '김';
+
+-- 30세 이상인 사람들의 숫자
+SELECT COUNT(*) FROM users WHERE age >= 30;
+-- 전체 중에 가장 작은 나이
+SELECT MIN(age) FROM users;
+-- 이씨 중에 가장 작은 나이
+SELECT MIN(age) FROM users WHERE last_name = '이';
+-- 이씨 중에 가장 작은 나이를 가진 사람의 이름과 계좌잔고
+SELECT MIN(age), first_name, balance FROM users WHERE last_name = '이';
+-- 30세 이상인 사람들의 평균 나이
+SELECT AVG(age) FROM users WHERE age >= 30;
+-- 계좌 잔액이 가장 높은 사람
+SELECT MAX(balance), first_name FROM users;
+
+-- 지역번호가 02인 사람
+SELECT COUNT(*) FROM users WHERE phone LIKE '02-%';
+-- 준으로 끝나는 사람
+SELECT COUNT(*) FROM users WHERE first_name LIKE '%준';
+-- 중간번호가 5114
+SELECT COUNT(*) FROM users WHERE phone LIKE '%-5114-%';
+
+-- 나이 오름차순 
+SELECT first_name FROM users ORDER BY age ASC LIMIT 10;
+-- 나이, 성 순으로 오름차순
+SELECT * FROM users ORDER BY age, last_name LIMIT 10;
+-- 계좌 잔액 순 내림차순 
+SELECT last_name, first_name, balance FROM users ORDER BY balance DESC LIMIT 10;
+-- 계좌 잔액 내림차순(높은->낮은 것), 성 오름차순(ㄱ->ㅎ)
+SELECT last_name, first_name, balance FROM users ORDER BY balance DESC, last_name ASC LIMIT 10;
+
+SELECT * FROM healthcare WHERE is_drinking = 1 ORDER BY waist ASC LIMIT 5;
+```
 
 
 
