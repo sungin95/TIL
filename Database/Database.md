@@ -267,7 +267,7 @@ DROP TABLE classmates;
 SELECT weight*10000/(height*height) AS BMI, weight, height FROM healthcare LIMIT 5;
 
 
-
+!= NOT <>
 ```
 
 
@@ -343,6 +343,649 @@ SELECT last_name, first_name, balance FROM users ORDER BY balance DESC, last_nam
 
 SELECT * FROM healthcare WHERE is_drinking = 1 ORDER BY waist ASC LIMIT 5;
 ```
+
+
+
+# 01_hello.sql
+
+```sqlite
+-- SQLite
+-- classmates라는 이름의 테이블 생성
+CREATE TABLE classmates (
+    id INTEGER PRIMARY KEY, 
+    name TEXT
+);
+
+-- 테이블 목록 조회
+.tables
+
+-- 특정 테이블 스키마 조회
+.schema classmates
+
+-- 값 추가
+INSERT INTO classmates VALUES (1, '조세호');
+
+-- 테이블 조회
+SELECT * FROM classmates;
+
+INSERT INTO classmates VALUES (2, '이동희');
+
+-- 테이블 삭제
+DROP TABLE classmates;
+```
+
+# 02_classmates.sql
+
+```sqlite
+-- classmates
+-- name : TEXT
+-- age : INT
+-- address : TEXT 
+
+CREATE TABLE classmates (
+    name TEXT,
+    age INT,
+    address TEXT
+);
+
+-- CREATE TABLE students(
+-- id INTEGER PRIMARY KEY,
+-- name TEXT NOT NULL,
+-- age INTEGER DEFAULT 1 CHECK (0 < age)
+-- );
+
+-- CREATE
+-- INSERT INTO classmates VALUES ('홍길동', 23);
+-- Parse error: table classmates has 3 columns but 2 values were supplied
+INSERT INTO classmates (name, age) VALUES ('홍길동', 23);
+SELECT * FROM classmates;
+INSERT INTO classmates (name, age, address) VALUES ('홍길동', 23, '서울');
+INSERT INTO classmates VALUES ('김철수', 40, '서울');
+
+SELECT rowid, * FROM classmates;
+-- rowid는 SQLite에서 자동으로 제공하고 있는 PK. 값이 1씩 증가하는 모습을 보임.
+-- rowid  name  age  address
+-- -----  ----  ---  -------
+-- 1      홍길동   23
+-- 2      홍길동   23   서울
+-- 3      김철수   40   서울
+
+DROP TABLE classmates;
+```
+
+# 03_classmates.sql
+
+```sqlite
+CREATE TABLE classmates (
+    name TEXT NOT NULL,
+    age INT NOT NULL,
+    address TEXT NOT NULL
+);
+
+INSERT INTO classmates VALUES 
+('홍길동', 30, '서울'), 
+('김철수', 30, '제주'),
+('이호영', 26, '인천'),
+('박민희', 29, '대구'),
+('최혜영', 28, '전주');
+
+SELECT * FROM classmates;
+-- name  age  address
+-- ----  ---  -------
+-- 홍길동   30   서울
+-- 김철수   30   제주
+-- 이호영   26   인천
+-- 박민희   29   대구
+-- 최혜영   28   전주
+
+SELECT rowid, name FROM classmates;
+rowid  name
+-----  ----
+1      홍길동
+2      김철수
+3      이호영
+4      박민희
+5      최혜영
+
+SELECT rowid, name FROM classmates LIMIT 2;
+-- rowid  name
+-- -----  ----
+-- 1      홍길동
+-- 2      김철수
+
+SELECT rowid, name FROM classmates LIMIT 1 OFFSET 2;
+-- rowid  name
+-- -----  ----
+-- 3      이호영
+
+SELECT * FROM classmates WHERE address='서울';
+-- name  age  address
+-- ----  ---  -------
+-- 홍길동   30   서울
+
+SELECT name FROM classmates WHERE age >= 30;
+-- name
+-- ----
+-- 홍길동
+-- 김철수
+
+SELECT DISTINCT age FROM classmates;
+-- age
+-- ---
+-- 30
+-- 26
+-- 29
+-- 28
+
+SELECT DISTINCT address FROM classmates;
+-- address
+-- -------
+-- 서울
+-- 제주
+-- 인천
+-- 대구
+-- 전주
+
+-- 삭제 
+DELETE FROM classmates WHERE rowid=5;
+rowid  name  age  address
+-----  ----  ---  -------
+1      홍길동   30   서울
+2      김철수   30   제주
+3      이호영   26   인천
+4      박민희   29   대구
+
+INSERT INTO classmates VALUES ('주세환', 40, '대전'); 
+SELECT rowid, * FROM classmates;
+-- rowid  name  age  address
+-- -----  ----  ---  -------
+-- 1      홍길동   30   서울
+-- 2      김철수   30   제주
+-- 3      이호영   26   인천
+-- 4      박민희   29   대구
+-- 5      주세환   40   대전
+
+-- 수정
+UPDATE classmates SET name='홍길동', address='제주도' WHERE rowid=5;
+SELECT rowid, * FROM classmates;
+rowid  name  age  address
+-----  ----  ---  -------
+1      홍길동   30   서울
+2      김철수   30   제주
+3      이호영   26   인천
+4      박민희   29   대구
+5      홍길동   40   제주도
+
+SELECT rowid, name FROM classmates LIMIT 100;
+```
+
+# 04_autoincrement.sql
+
+```sqlite
+CREATE TABLE members(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
+);
+
+INSERT INTO members VALUES 
+(1, '홍길동'), 
+(2, '김철수'),
+(3, '이호영'),
+(4, '박민희'),
+(5, '최혜영');
+
+DELETE FROM members WHERE rowid=5;
+INSERT INTO members (name) VALUES ('주세환'); 
+SELECT * FROM members;
+-- id  name
+-- --  ----
+-- 1   홍길동
+-- 2   김철수
+-- 3   이호영
+-- 4   박민희
+-- 6   주세환  
+```
+
+# 05.users.sql
+
+```sqlite
+-- SQLite
+
+-- 테이블 생성
+-- 정호,유,40,전라북도,016-7280-2855,370
+CREATE TABLE users (
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    country TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    balance INTEGER NOT NULL
+);
+
+-- 데이터를 추가
+.mode csv
+-- 같은 디렉토리에 있는 users.csv 파일을 users 테이블로
+.import users.csv users
+
+
+-- 쿼리
+
+-- 30세 이상인 사람들
+SELECT * FROM users WHERE age >= 30;
+-- 30세 이상인 사람들의 이름
+SELECT first_name FROM users WHERE age >= 30;
+-- 30세 이상인 사람들의 이름 3명만
+SELECT first_name FROM users WHERE age >= 30 LIMIT 3;
+-- 30세 이상이고 성이 김인 사람
+SELECT age, first_name FROM users WHERE age >= 30 AND last_name = '김';
+
+-- 30세 이상인 사람들의 숫자
+SELECT COUNT(*) FROM users WHERE age >= 30;
+-- 전체 중에 가장 작은 나이
+SELECT MIN(age) FROM users;
+-- 이씨 중에 가장 작은 나이
+SELECT MIN(age) FROM users WHERE last_name = '이';
+-- 이씨 중에 가장 작은 나이를 가진 사람의 이름과 계좌잔고
+SELECT MIN(age), first_name, balance FROM users WHERE last_name = '이';
+-- 30세 이상인 사람들의 평균 나이
+SELECT AVG(age) FROM users WHERE age >= 30;
+-- 계좌 잔액이 가장 높은 사람
+SELECT MAX(balance), first_name FROM users;
+
+-- 지역번호가 02인 사람
+SELECT COUNT(*) FROM users WHERE phone LIKE '02-%';
+-- 준으로 끝나는 사람
+SELECT COUNT(*) FROM users WHERE first_name LIKE '%준';
+-- 중간번호가 5114
+SELECT COUNT(*) FROM users WHERE phone LIKE '%-5114-%';
+
+-- 나이 오름차순 
+SELECT first_name FROM users ORDER BY age ASC LIMIT 10;
+-- 나이, 성 순으로 오름차순
+SELECT * FROM users ORDER BY age, last_name LIMIT 10;
+-- 계좌 잔액 순 내림차순 
+SELECT last_name, first_name, balance FROM users ORDER BY balance DESC LIMIT 10;
+-- 계좌 잔액 내림차순(높은->낮은 것), 성 오름차순(ㄱ->ㅎ)
+SELECT last_name, first_name, balance FROM users ORDER BY balance DESC, last_name ASC LIMIT 10;
+```
+
+# 06_function.sql
+
+```sqlite
+SELECT * FROM users LIMIT 1;
+
+-- pipe sign 엔터 위에 있어요 보통
+-- 문자열 합치기 ||
+-- (성+이름) 출력, 5명만
+SELECT 
+    last_name || first_name 이름,
+    age,
+    country,
+    phone,
+    balance
+FROM users
+LIMIT 5;
+
+-- 이름   age  country  phone          balance
+-- ---  ---  -------  -------------  -------
+-- 유정호  40   전라북도     016-7280-2855  370
+-- 이경희  36   경상남도     011-9854-5133  5900
+-- 구정자  37   전라남도     011-4177-8170  3100
+-- 장미경  40   충청남도     011-9079-4419  250000
+-- 차영환  30   충청북도     011-2921-4284  220
+
+-- 문자열 길이 LENGTH
+SELECT 
+    LENGTH(first_name),
+    first_name
+FROM users
+LIMIT 5;
+-- LENGTH(first_name)  first_name
+-- ------------------  ----------
+-- 2                   정호
+-- 2                   경희
+-- 2                   정자
+-- 2                   미경
+-- 2                   영환
+
+-- 문자열 변경 REPLACE
+-- 016-7280-2855 => 01672802855
+SELECT 
+    first_name,
+    phone,
+    REPLACE(phone, '-', '')
+FROM users
+LIMIT 5;
+
+-- 숫자 활용
+SELECT MOD(5, 2)
+FROM users
+LIMIT 1;
+
+-- 올림, 내림, 반올림
+SELECT CEIL(3.14), FLOOR(3.14), ROUND(3.14)
+FROM users
+LIMIT 1;
+
+-- 9의 제곱근
+SELECT SQRT(9)
+FROM users
+LIMIT 1;
+
+-- 9^2
+SELECT POWER(9, 2)
+FROM users
+LIMIT 1;
+```
+
+# 07_group.sql
+
+```sqlite
+-- GROUP BY
+
+-- 성별 갯수
+SELECT last_name, COUNT(*)
+FROM users
+GROUP BY last_name;
+
+-- GROUP BY에서 활용하는 컬럼을 제외하고는
+-- 집계함수를 쓰세요.
+SELECT last_name, AVG(age), COUNT(*)
+FROM users
+GROUP BY last_name;
+
+-- 참고...
+SELECT last_name, age
+FROM users
+WHERE last_name = '곽';
+-- last_name  age
+-- ---------  ---
+-- 곽          25
+-- 곽          30
+-- 곽          28
+-- 곽          15
+
+-- GROUP BY는 결과가 정렬되지 않아요. 기존 순서와 바뀜
+-- 원칙적으로 내가 정렬해서 보고 싶으면 ORDER BY!
+
+SELECT *
+FROM users
+LIMIT 5;
+-- first_name  last_name  age  country  phone          balance       
+-- ----------  ---------  ---  -------  -------------  -------       
+-- 정호          유          40   전라북도     016-7280-2855  370    
+-- 경희          이          36   경상남도     011-9854-5133  5900   
+-- 정자          구          37   전라남도     011-4177-8170  3100   
+-- 미경          장          40   충청남도     011-9079-4419  250000 
+-- 영환          차          30   충청북도     011-2921-4284  220  
+
+SELECT last_name, COUNT(*)
+FROM users
+GROUP BY last_name
+LIMIT 5;
+
+-- last_name  COUNT(*)
+-- ---------  --------
+-- 강          23
+-- 고          10
+-- 곽          4
+-- 구          2
+-- 권          17
+
+-- GROUP BY WHERE를 쓰고 싶다.
+-- 100번 이상 등장한 성만 출력하고 싶음. 
+SELECT last_name, COUNT(last_name)
+FROM users
+WHERE COUNT(last_name) > 100
+GROUP BY last_name;
+-- 오류 발생!
+-- Parse error: misuse of aggregate: COUNT()
+--   LECT last_name, COUNT(last_name) FROM users WHERE COUNT(last_name) > 100 GROUP
+
+-- 조건에 따른 GROUP 하시려면
+-- HAVING을 쓴다!
+SELECT last_name, COUNT(last_name)
+FROM users
+GROUP BY last_name
+HAVING COUNT(last_name) > 100;
+```
+
+# 08_case.sql
+
+```sqlite
+-- 단순 조회
+SELECT id, gender
+FROM healthcare
+LIMIT 5;
+
+-- id  gender
+-- --  ------
+-- 1   1
+-- 2   2
+-- 3   2
+-- 4   1
+-- 5   2
+
+-- 성별 1(남자), 2(여자)
+SELECT 
+    id,
+    CASE 
+        WHEN gender = 1 THEN '남자'
+        WHEN gender = 2 THEN '여자'
+        -- ELSE 
+    END AS 성별
+FROM healthcare 
+LIMIT 5;
+-- id  성별
+-- --  -----
+-- 1   남자
+-- 2   여자
+-- 3   여자
+-- 4   남자
+-- 5   여자
+
+-- 흡연(smoking)
+SELECT DISTINCT smoking
+FROM healthcare;
+
+SELECT 
+    id, 
+    smoking, 
+    CASE 
+        WHEN smoking = 1 THEN '비흡연자'
+        WHEN smoking = 2 THEN '흡연자'
+        WHEN smoking = 3 THEN '헤비스모커'
+        ELSE '무응답'
+    END
+FROM healthcare
+LIMIT 50;
+
+-- 나이에 따라서 구분
+-- 청소년(~18), 청년(~40), 중장년(~90)
+SELECT 
+    first_name,
+    last_name,
+    age,
+    CASE 
+        WHEN age <= 18 THEN '청소년'
+        WHEN age <= 40 THEN '청년'
+        WHEN age <= 90 THEN '중장년'
+        ELSE '노년' 
+    END
+FROM users
+LIMIT 10;
+```
+
+# 09_subquery.sql
+
+```sqlite
+-- 가장 나이가 작은 사람의 수
+-- 1
+SELECT age, COUNT(*)
+FROM users
+GROUP BY age
+ORDER BY age
+LIMIT 1;
+-- age  COUNT(*)
+-- ---  --------
+-- 15   39
+
+-- 확인해보기
+SELECT MIN(age) 
+FROM users;
+-- MIN(age)
+-- --------
+-- 15
+
+SELECT COUNT(*)
+FROM users 
+WHERE age = 15;
+-- COUNT(*)
+-- --------
+-- 39
+
+SELECT COUNT(*)
+FROM users 
+WHERE age = (SELECT MIN(age) FROM users);
+-- COUNT(*)
+-- --------
+-- 39
+
+-- 평균 계좌 잔고가 높은 사람은 수?
+
+SELECT AVG(balance) FROM users;
+
+SELECT COUNT(*)
+FROM users
+WHERE balance > (SELECT AVG(balance) FROM users);
+-- COUNT(*)
+-- --------
+-- 222
+
+-- 유은정과 같은 지역에 사는 사람의 수?
+SELECT 
+    country
+FROM users
+WHERE last_name = '유' AND first_name = '은정';
+
+SELECT 
+    COUNT(*)
+FROM users
+WHERE country = (SELECT country FROM users
+WHERE last_name = '유' AND first_name = '은정');
+
+-- 당연히
+SELECT COUNT(*), AVG(balance), AVG(age)
+FROM users;
+
+-- 예를 들면
+-- table이 게시글 테이블, 댓글 테이블
+SELECT 
+    (SELECT COUNT(*) FROM users) AS 총인원,
+    (SELECT AVG(balance) FROM users) AS 평균연봉;
+-- 총인원   평균연봉
+-- ----  ---------
+-- 1000  151456.89
+
+-- 이은정
+SELECT 
+    country
+FROM users
+WHERE last_name = '이' AND first_name = '은정';
+-- country
+-- -------
+-- 전라북도
+-- 경상북도
+
+SELECT 
+    COUNT(*)
+FROM users
+WHERE country = (SELECT country FROM users
+WHERE last_name = '이' AND first_name = '은정');
+-- COUNT(*)
+-- --------
+-- 115
+
+SELECT country, COUNT(*)
+FROM users
+GROUP BY country;
+-- country  COUNT(*)
+-- -------  --------
+-- 강원도      101
+-- 경기도      114
+-- 경상남도     106
+-- 경상북도     103
+-- 전라남도     123
+-- 전라북도     115
+-- 제주특별자치도  118
+-- 충청남도     105
+-- 충청북도     115
+
+SELECT 
+    COUNT(*)
+FROM users
+WHERE country IN (SELECT country FROM users
+WHERE last_name = '이' AND first_name = '은정');
+-- COUNT(*)
+-- --------
+-- 218
+
+-- 특정 성씨별로 가장 적은 나이 사람 모두
+SELECT 
+    last_name,
+    MIN(age)
+FROM users
+GROUP BY last_name;
+
+SELECT
+    last_name,
+    first_name,
+    age
+FROM users
+WHERE (last_name, age) IN (
+    SELECT 
+        last_name,
+        MIN(age)
+    FROM users
+    GROUP BY last_name)
+ORDER BY last_name;
+```
+
+# 10_last.sql
+
+```sqlite
+-- AC/DC의 모든 앨범
+-- AC/DC (artists)
+-- 앨범(albums)
+
+-- 앨범 검색하려고 했는데..
+-- 아티스는 id로 저장되어있네요.
+-- AC/DC는 아는데 ID를 모르네요?
+
+-- ID 조회
+SELECT ArtistId 
+FROM artists
+WHERE Name = 'Nirvana';
+
+-- 서브쿼리
+SELECT * 
+FROM albums
+WHERE ArtistId = (SELECT ArtistId 
+FROM artists
+WHERE Name = 'Nirvana');
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
