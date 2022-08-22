@@ -973,9 +973,203 @@ FROM albums
 WHERE ArtistId = (SELECT ArtistId 
 FROM artists
 WHERE Name = 'Nirvana');
+
+SELECT * FROM users JOIN role ON users.role_id = role.id;
+
+SELECT * FROM users JOIN artists ON users.ArtistId = artists.id
+SELECT * FROM albums WHERE ArtistId = (SELECT ArtistId FROM artists WHERE Name = 'Nirvana');
+
+WHERE ArtistId = (SELECT ArtistId 
+FROM artists
+WHERE Name = 'Nirvana');
 ```
 
 
+
+FQA)
+
+그럼 조인과 서브쿼리랑 차이점이라고 한다면 
+
+조인은 id가 같은 모두를 찾아서 보여준다. 
+
+서브 쿼리는 특정조건에 맞는(WHERE을 사용시) 쿼리만 찾아 보여 준다 이 정도로 이해 하면 될까요?
+
+예시)
+
+SELECT * FROM users JOIN artists ON users.ArtistId = artists.id
+SELECT * FROM albums WHERE ArtistId = (SELECT ArtistId FROM artists WHERE Name = 'Nirvana');
+
+re: 정의 서브는 쿼리안에 쿼리
+
+조인은 두 테이블을 합친다
+
+조인이 성능적으로 더 좋다. 
+
+웹페이지에 조인 vs 서브쿼리
+
+모든것이 대체 될 수 있는 개념이 아니다. 
+
+# JOIN 
+
+- INNER JOIN
+- OUTER JOIN
+- LEFT JOIN(겹치지 않으면 혹은 NULL이면 모든 값이 NULL이렇게 나옴)
+- FULL OUTER JOIN (왼쪽, 오른쪽 하고 겹치는것은 공백?한다. )
+- CROSS JOIN (모든 가능한 수 조인)
+
+WHERE과도 합칠 수 있다. 
+
+```sqlite
+SELECT * FROM users LEFT OUTER JOIN role ON users.role_id = role.id WHERE id != NULL;
+SELECT * FROM albums FULL OUTER JOIN artists ON albums.role_id = artists.id;
+장르 정보
+트렉에 앨범 아이디 아이디 대신 이름의 형태. 
+```
+
+11_CREATE.sq
+
+```sqlite
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    name TEXT,
+    role_id INT
+);
+
+INSERT INTO users VALUES 
+    (1, '관리자', 1),
+    (2, '김철수', 2),
+    (3, '이영희', 2);
+
+CREATE TABLE role (
+    id INT PRIMARY KEY, 
+    title TEXT
+);
+
+INSERT INTO role VALUES 
+    (1, 'admin'),
+    (2, 'staff'),
+    (3, 'student');
+
+CREATE TABLE articles (
+    id INT PRIMARY KEY, 
+    title TEXT,
+    content TEXT,
+    user_id INT
+);
+
+INSERT INTO articles VALUES 
+    (1, '1번글', '111', 1),
+    (2, '2번글', '222', 2),
+    (3, '3번글', '333', 1),
+    (4, '4번글', '444', NULL);
+
+-- 확인
+.mode column
+SELECT * FROM users;
+SELECT * FROM role;
+SELECT * FROM articles;
+```
+
+12_join.sql
+
+```sqlite
+-- INNER JOIN
+-- A와 B테이블에서 값이 일치하는 것들만 
+SELECT *
+FROM users INNER JOIN role
+    ON users.role_id = role.id;
+-- id  name  role_id  id  title
+-- --  ----  -------  --  -----
+-- 1   관리자   1        1   admin
+-- 2   김철수   2        2   staff
+-- 3   이영희   2        2   staff
+
+SELECT 
+    users.name, 
+    role.title
+FROM users INNER JOIN role
+    ON users.role_id = role.id;
+-- name  title
+-- ----  -----
+-- 관리자   admin
+-- 김철수   staff
+-- 이영희   staff
+
+-- 스태프(2)만 출력
+SELECT *
+FROM users INNER JOIN role
+    ON users.role_id = role.id
+WHERE role.id = 2;
+-- id  name  role_id  id  title
+-- --  ----  -------  --  -----
+-- 2   김철수   2        2   staff
+-- 3   이영희   2        2   staff
+
+-- 이름을 내림차순으로 출력하세요.
+SELECT *
+FROM users INNER JOIN role
+    ON users.role_id = role.id
+ORDER BY users.name DESC;
+-- id  name  role_id  id  title
+-- --  ----  -------  --  -----
+-- 3   이영희   2        2   staff
+-- 2   김철수   2        2   staff
+-- 1   관리자   1        1   admin
+
+-- LEFT OUTER JOIN
+SELECT * 
+FROM articles LEFT OUTER JOIN users
+    ON articles.user_id = users.id;
+
+-- id  title  content  user_id  id  name  role_id
+-- --  -----  -------  -------  --  ----  -------
+-- 1   1번글    111      1        1   관리자   1
+-- 2   2번글    222      2        2   김철수   2
+-- 3   3번글    333      1        1   관리자   1
+-- 4   4번글    444
+
+SELECT * 
+FROM articles LEFT OUTER JOIN users
+    ON articles.user_id = users.id
+WHERE articles.user_id IS NOT NULL;
+-- id  title  content  user_id  id  name  role_id
+-- --  -----  -------  -------  --  ----  -------
+-- 1   1번글    111      1        1   관리자   1
+-- 2   2번글    222      2        2   김철수   2
+-- 3   3번글    333      1        1   관리자   1
+
+SELECT * 
+FROM articles FULL OUTER JOIN users
+    ON articles.user_id = users.id;
+
+-- CROSS JOIN
+SELECT * 
+FROM users CROSS JOIN role;
+-- id  name  role_id  id  title
+-- --  ----  -------  --  -------
+-- 1   관리자   1        1   admin
+-- 1   관리자   1        2   staff
+-- 1   관리자   1        3   student
+-- 2   김철수   2        1   admin
+-- 2   김철수   2        2   staff
+-- 2   김철수   2        3   student
+-- 3   이영희   2        1   admin
+-- 3   이영희   2        2   staff
+-- 3   이영희   2        3   student
+
+-- 3개의 테이블 조인
+SELECT * 
+FROM articles
+    JOIN users
+        ON articles.user_id = users.id
+    JOIN role
+        ON users.role_id = role.id;
+-- id  title  content  user_id  id  name  role_id  id  title
+-- --  -----  -------  -------  --  ----  -------  --  -----
+-- 1   1번글    111      1        1   관리자   1        1   admin
+-- 2   2번글    222      2        2   김철수   2        2   staff
+-- 3   3번글    333      1        1   관리자   1        1   admin
+```
 
 
 
