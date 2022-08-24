@@ -1,0 +1,40 @@
+.screen_width_font-size {
+  font-size: 15px;
+}
+
+
+.screen_width{
+  width: 1499px;
+  height: 1000px;
+}
+
+@media ( max-width: 1516px ) {
+  .screen_width{
+    width: 100%;
+    height: 1000px;
+  }
+}
+
+@media ( max-width: 1216px ) {
+  .screen_width{
+    width: 100%;
+    height: 1250px;
+  }
+}
+@media ( max-width: 916px ) {
+  .screen_width{
+    width: 100%;
+    height: 1900px;
+  }
+}
+
+@media ( max-width: 616px ) {
+  .screen_width{
+      width: 100%;
+      height: 3800px;
+  }
+  .screen_width_font-size {
+    font-size: 10px;
+  
+  }
+}
