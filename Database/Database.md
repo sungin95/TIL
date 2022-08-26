@@ -1026,7 +1026,7 @@ SELECT * FROM albums FULL OUTER JOIN artists ON albums.role_id = artists.id;
 트렉에 앨범 아이디 아이디 대신 이름의 형태. 
 ```
 
-11_CREATE.sq
+# 11_CREATE.sq
 
 ```sqlite
 CREATE TABLE users (
@@ -1070,7 +1070,7 @@ SELECT * FROM role;
 SELECT * FROM articles;
 ```
 
-12_join.sql
+# 12_join.sql
 
 ```sqlite
 -- INNER JOIN
