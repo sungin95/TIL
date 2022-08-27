@@ -1,8 +1,11 @@
 import sys
 sys.stdin = open("2304.txt","r")
-
+# 접근 방법: 우선 MAX값을 알아낸다. 
+# 맨 왼쪽에서 부터 넓이를 구해간다.(max값 제외)
+# 맨 오른쪽에서 부터 넓이를 구해간다.(max값 제외) 
+# 마지막으로 맥스랑 길이가 같은 곳의 넓이를 구한다.  
 N = int(input())
-warehouse_ab = []
+warehouse_ab = [] # 위치와 높이 모두 기록.
 warehouse = []
 for _ in range(N):
     a,b = map(int, input().split())
