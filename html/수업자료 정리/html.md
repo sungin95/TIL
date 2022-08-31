@@ -25,50 +25,6 @@ styles, element.style: 임시로 바꿀 수 있음
 
 id는 1번만 쓰자(권장)
 
-# mdn
-
-```html
-<map name="infographic">
-    <area shape="rect" coords="184,6,253,27"
-          href="https://mozilla.org"
-          target="_blank" alt="Mozilla" />
-    <area shape="circle" coords="130,136,60"
-          href="https://developer.mozilla.org/"
-          target="_blank" alt="MDN" />
-    <area shape="poly" coords="130,6,253,96,223,106,130,39"
-          href="https://developer.mozilla.org/docs/Web/Guide/Graphics"
-          target="_blank" alt="Graphics" />
-    <area shape="poly" coords="253,96,207,241,189,217,223,103"
-          href="https://developer.mozilla.org/docs/Web/HTML"
-          target="_blank" alt="HTML" />
-    <area shape="poly" coords="207,241,54,241,72,217,189,217"
-          href="https://developer.mozilla.org/docs/Web/JavaScript"
-          target="_blank" alt="JavaScript" />
-    <area shape="poly" coords="54,241,6,97,36,107,72,217"
-          href="https://developer.mozilla.org/docs/Web/API"
-          target="_blank" alt="Web APIs" />
-    <area shape="poly" coords="6,97,130,6,130,39,36,107"
-          href="https://developer.mozilla.org/docs/Web/CSS"
-          target="_blank" alt="CSS" />
-</map>
-<img usemap="#infographic" src="/media/examples/mdn-info.png" alt="MDN infographic" />
-shape="rect" coords="184,6,253,27" 모양과 좌표로 추정
-target="_blank" blank는 새창, self로 하면 현재 창에서 화면을 띄운다. 
-
-<figure> 태그는 삽화나 다이어그램, 사진 등과 같이 문서의 주요 흐름과는 독립적인 콘텐츠를 정의할 때 사용합니다.
-    
-<figure>
-    <figcaption>Listen to the T-Rex:</figcaption>
-    <audio
-        controls
-        src="/media/cc0-audio/t-rex-roar.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
-
-```
-
 # 드림코딩
 
 ```html
