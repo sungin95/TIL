@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  min-width: 1280px;
+  color: #333333;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*nav*/
+nav {
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.nav-ul {
+    display: flex;
+}
+.nav-a {
+    margin: 0px 10px;
+    font-size: 12px;
+    text-decoration: none;
+}
+.nav-a:visited {
+    color: black;
+}
+/*main*/
+.main_index {
+    width: 1280px;
+    position: relative;
+}
+.main_top {
+    height: 700px;
+}
+.main_img_big {
+    width: 1280px;
+}
+.main_botton {
+    display: flex;
+    width: 1280px;
+    justify-content: center;
+    background-color: white;
+    position: absolute;
+    bottom: -300px;
+    padding: 30px 20px;
+}
+.main_img_small {
+    width: 500px;
+    border-radius: 30px;
+    margin: 0px 20px;
+}
+.main_rite {
+    width: 500px;
+}
+.main_rite :first-child{
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.main_rite :last-child{
+    font-size: 16px;
+    line-height: 25px;
+}
+/*footer*/
+footer {
+    width: 880px;
+    margin-top: 300px;
+    text-align: center;
+}
+.footer_picturn {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+}
+.footer_more {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+.footer_img {
+    width: 64px;
+}
+
+.footer_icon {
+    position: absolute;
+    width: 30px;
+    right: -200px;
+    bottom: 1px;
+}
