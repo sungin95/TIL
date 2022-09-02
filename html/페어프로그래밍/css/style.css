@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  height: 10000px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  padding: 0px 30px;
+  align-items: center;
+  height: 80px;
+  background-color: white;
+}
+
+.logo {
+  height: 60px;
+}
+
+.nav_ul {
+  display: flex;
+  
+}
+
+.nav_list {
+  margin: 10px;
+}
+
+.list {
+  text-decoration: none;
+  color: black;
+}
+
+.main_title {
+  background-image: url("../images/background.jpg");
+  height: 320px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.main_h1 {
+  font-size: 50px;
+}
+
+.main_aside {
+    display: flex;
+}
+.main_genre {
+    display: flex;
+    margin-left: 10px;
+    width: 20%;
+    flex-direction: column;
+}
+.main_genre_list {
+    font-size: 20px;
+    margin: 10px 0px;
+}
+.main_movie {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
+    padding: 0px 24px;
+    background-color: #484442;
+}
+
+.main_movie_text {
+  display: flex;
+  text-align: center;
+  font-size: 25px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.main_moive_img {
+  display: flex;
+  justify-content: space-around;
+}
+
+.main_movie_photo {
+  width: 300px;
+  padding: 0px 24px;
+  text-align: center;
+}
+.main_movie_re{
+    position: relative;
+}
+.main_movie_photo_title{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.main_movie_text2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.movie_title_2{
+  justify-content: center;
+}
+.main_title_movie {
+    width: 300px;
+}
+#content {
+    color: black;
+}
+footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    bottom: 0px;
+    background-color: black;
+    color: white;
+    width: 100%;
+}

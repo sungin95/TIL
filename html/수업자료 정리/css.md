@@ -160,6 +160,19 @@ float: left;
 }
 ```
 
+# 몰랐던거
+
+```css
+.banner {
+    background_image: url('../assets/apparel.jpeg');
+    background_size: cover;
+    background_repeat: no-repeat;
+}
+/*background_image 단순 뒷 배경, 이미지 : 하나의 콘텐츠 */
+```
+
+
+
 
 
 구글 스타일 가이드	
@@ -183,6 +196,8 @@ mata 태그는  html 문서에 대한 메타데이터를 정의합니다. 이건
 페이지에는 표시가 않되지만 시스템에서 분석 가능.
 
 
+
+# meta
 
 **검색 엔진에 대한 키워드 정의:**
 
@@ -217,6 +232,8 @@ mata 태그는  html 문서에 대한 메타데이터를 정의합니다. 이건
 부품 은 `width=device-width`장치의 화면 너비를 따르도록 페이지 너비를 설정합니다(장치에 따라 다름).
 
 이 `initial-scale=1.0`부분은 브라우저에서 페이지를 처음 로드할 때 초기 확대/축소 수준을 설정합니다.
+
+
 
 
 
