@@ -1,36 +1,67 @@
 import sys
 sys.stdin = open("2579.txt", "r")
 
+from copy import copy
+stair = []
+answer = 0
 t = int(input())
-stair_list = []
-max_answer = 0
-i_list = []
 for i in range(t):
-    stair = int(input())
-    stair_list.append(stair)
-    i_list.append(i)
-i = 0
-jump_cnt = 0
-if t == 3:
-    max_answer = sum(stair_list) - min(stair_list)
-    print(max_answer)
-else:
-    while i != t:
-        print(i)
-        print(i_list)
-        jump_list = []
-        jump_stair = 0
-        for j in range(1,4):
-            if i+j < t:
-                jump_list.append(stair_list[i+j])
-        if len(jump_list) == 3:
-            jump_stair = jump_list.index(min(jump_list))
-            i += jump_stair+1
-            i_list.pop(i -jump_cnt)
-            jump_cnt += 1
-        else: 
-            break
-    for i in i_list:
-        max_answer += stair_list[i]
-    
-    print(max_answer)
+    data = int(input())
+    stair.append(data)
+answer_list = []
+answer_list.append(0)
+answer = 0
+stair2 = []
+stair2.append(stair[:])
+cnt = 0
+len_ans = [len(stair)]
+
+for st in stair2:
+    if st == []:
+        continue
+    answer = answer_list[cnt]
+    cnt += 1
+    step_1 = st.pop()
+    answer += step_1
+    answer_list.append(answer)
+    if st == []:
+        len_ans.append(0)
+        stair2.append([])
+        continue
+
+    step_2 = st.pop()
+    sta = copy(st)
+
+    if len(sta) not in len_ans:
+        len_ans.append(len(sta))
+        stair2.append(sta)
+    else:
+        index_a = len_ans.index(len(sta))
+        if answer_list[index_a] < answer:
+            answer_list[index_a] = answer
+        answer_list.pop()
+
+    answer += step_2
+    answer_list.append(answer)
+    if st == []:
+        len_ans.append(0)
+        stair2.append([])
+        continue
+    st.pop()
+    stb = copy(st)
+
+    if len(stb) not in len_ans:
+        len_ans.append(len(stb))
+        stair2.append(stb)
+    else:
+        index_b = len_ans.index(len(stb))
+        if answer_list[index_b] < answer:
+            answer_list[index_b] = answer
+        answer_list.pop()
+
+print(max(answer_list))
+
+
+
+
+
