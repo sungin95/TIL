@@ -1,0 +1,14 @@
+.input {
+    width: 100%;
+}
+.info {
+    margin-bottom: 0.5rem;
+    color: #adb5bd;
+}
+
+a:link {
+    text-decoration:none;
+}
+i {
+    color: aqua;
+}
