@@ -1,0 +1,42 @@
+@import "./font.css"; /* business-grontpage */
+header {
+  height: 100%;
+}
+.shop_img {
+  background-image: url("https://www.dummyimage.com/1200x400/212529/ffffff&text=+");
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.d-sm-flex {
+  width: 80vw;
+}
+i {
+  font-size: 50px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.card {
+  border: 0px;
+}
+.card-body {
+  padding: 40px;
+  margin: 40px;
+  border: 1px solid rgb(169, 169, 169);
+  background-color: white;
+  border-radius: 5px;
+}
+
+@media (min-width: 576px) {
+  .shop_img_title {
+    width: 50vw;
+  }
+}
+@media (min-width: 1400px) {
+  .shop_img_title {
+    width: 30vw;
+  }
+}

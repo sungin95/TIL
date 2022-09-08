@@ -1,0 +1,30 @@
+/* shop-homepage */
+body {
+  height: 100%;
+}
+.nav_cart {
+  border-radius: 20px;
+}
+.shop_img {
+  background-image: url("https://www.dummyimage.com/1200x400/212529/ffffff&text=+");
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.fs-0 {
+  font-size: 60px;
+}
+del {
+  color: gray;
+}
+.text-warning {
+  margin: 0px;
+}
+.sale {
+  border-radius: 3px;
+  margin: 7px;
+  padding: 1px 5px;
+}
