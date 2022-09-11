@@ -40,3 +40,21 @@ i {
     width: 30vw;
   }
 }
+.section_2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+.section_2_box {
+  width: 600px;
+}
+.section_3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-control3 {
+  height: 200px;
+}

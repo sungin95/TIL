@@ -28,3 +28,10 @@ del {
   margin: 7px;
   padding: 1px 5px;
 }
+.item_img {
+  height: 1000px;
+  border: 1px solid black;
+}
+.recommend {
+  background-color: #f8f9fa;
+}
