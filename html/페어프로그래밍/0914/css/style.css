@@ -27,39 +27,13 @@ footer {
   height: 80px;
   border-radius: 50px;
 }
-.logo {
-  height: 80px;
-}
-footer {
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.card {
-  padding: 0;
-  border: 0px;
-}
-.appear {
-  display: none;
-}
-@media screen and (max-width: 992px) {
-  .delete {
-    display: none;
-  }
-  .appear {
-    display: block;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-  }
-}
-.actor {
-  height: 80px;
-  border-radius: 50px;
-}
 .user {
   height: 50px;
   border-radius: 50px;
 }
-main {
+.main {
   margin: 0px 40px;
+}
+.movie-title {
+  font-size: 70px;
 }

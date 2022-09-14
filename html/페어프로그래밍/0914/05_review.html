@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>0913 실습</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <!-- place navbar here -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img class="logo" src="./images/logo.png" alt="" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="./02_home.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./03_community.html">Community</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  href="#"
+                  >Login</a
+                >
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Modal title
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label"
+                              >Email address</label
+                            >
+                            <input
+                              type="email"
+                              class="form-control"
+                              id="exampleInputEmail1"
+                              aria-describedby="emailHelp"
+                            />
+                            <div id="emailHelp" class="form-text">
+                              We'll never share your email with anyone else.
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label
+                              for="exampleInputPassword1"
+                              class="form-label"
+                              >Password</label
+                            >
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="exampleInputPassword1"
+                            />
+                          </div>
+                          <div class="mb-3 form-check">
+                            <input
+                              type="checkbox"
+                              class="form-check-input"
+                              id="exampleCheck1"
+                            />
+                            <label class="form-check-label" for="exampleCheck1"
+                              >Check me out</label
+                            >
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- 기본 정보 -->
+      <div class="container">
+        <div class="d-flex align-items-end m-4">
+          <div class="">
+            <img
+              src="./images/movie1.jpg"
+              alt="쇼생크탈출"
+              style="height: 300px"
+              class="rounded-3"
+            />
+          </div>
+          <div class="ms-5">
+            <h1 class="fw-bolder movie-title">쇼생크 탈출</h1>
+            <p class="lead text-secondary fw-semibold">The shawshank Redemption, 1994</p>
+            <p>드라마 · 희망적인 · 2시간 22분 · 15세이상관람가평균 · 4.4</p>
+          </div>
+        </div>
+      </div>
+      <!-- 내용 -->
+      <nav id="navbar-example2" class="navbar bg-primary text-dark bg-opacity-10 px-3 mb-5">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">줄거리</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">감독/출연</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading3">리뷰</a>
+          </li>
+        </ul>
+      </nav>
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-light rounded-2" tabindex="0">
+        <div class="mb-5">
+          <h4 class="bg-primary text-dark bg-opacity-10 border-top py-2 px-3 fw-bold" id="scrollspyHeading1">줄거리</h4>
+          <p><span class="fw-bold">두려움은 너를 죄수로 가두고<br>
+            희망은 너를 자유롭게 하리라</span>
+          <br><br>
+            촉망 받던 은행 부지점장 ‘앤디(팀 로빈슨 分)’는 아내와 그 애인을 살해한 혐의로 종신형을 받고 쇼생크 교도소에 수감된다. 강력범들이 수감된 이곳에서 재소자들은 짐승 취급 당하고, 혹여 간수 눈에 잘못 보였다가는 개죽음 당하기 십상이다. 처음엔 적응 못하던 ‘앤디’는 교도소 내 모든 물건을 구해주는 ‘레드(모건 프리먼 分)’와 친해지며 교도소 생활에 적응하려 하지만, 악질 재소자에게 걸려 강간까지 당한다.
+            그러던 어느 날, 간수장의 세금 면제를 도와주며 간수들의 비공식 회계사로 일하게 되고, 마침내는 소장의 검은 돈까지 관리해주게 된다. 덕분에 교도소 내 도서관을 열 수 있게 되었을 무렵, 신참내기 ‘토미(길 벨로우스 分)’로부터 ‘앤디’의 무죄를 입증할 기회를 얻지만, 노튼 소장은 ‘앤디’를 독방에 가두고 ‘토미’를 무참히 죽여버리는데...</p>
+        </div>
+          <h4 class="bg-primary text-dark bg-opacity-10 border-top py-2 px-3 fw-bold" id="scrollspyHeading2">감독/출연</h4>
+        <div class="row">
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center  my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/WT7umwyjtMsALOgIJVEbyw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4ek56SmpNbU5oT0RCaU0ySmpPRFpoTTJFME5DNXFjR2NpZlEuNVphZEw2LWp4Z3ZfbHVZdWduOG92aWI1eUVhanpDZDkwQlVvSGRVcjczdw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">프랭크 다라본트</span>
+                <p class="m-auto text-secondary">감독</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/KUJ0Z6mRX6fJ0d155Ad_mQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4M1pUZzROall5WkRWbE9XRTVOakV4TlRjellpNXFjR2NpZlEuN2thMy0yWkhINW9acDlQWWdVRmQ1MDJGRWtlUGZvcTRSRUVzRUVzYmdqSQ" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">팀 로빈스</span>
+                <p class="m-auto text-secondary">주연 / 앤디 듀프레인</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/wUqNNRCQ1wAuaN0li0PKVg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNCbGNuTnZiaTh4TmpRNU5qVTJNak13TXpRMU16a3dNRGMySW4wLmpSTEoycUVtNklQVHFvUmpBRWdNM3A3WHNGSU5URmc4UWs1QVB5dUJMejg" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">모건 프리먼</span>
+                <p class="m-auto text-secondary">주연 / 레드 (엘리스 보이드 레딩)</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/9pkuCig7yze0sSWj25bddg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4MFpHTTJPR000WkRreU1EUTBZall4TkRRNVl5NXFjR2NpZlEuYWNkQzRpM1VDZFJ6akVMcEJ0ZjVQUXc5bGtBRUxVQXljczdlNjJhWXBGaw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">밥 건톤</span>
+                <p class="m-auto text-secondary">조연 / 노튼 소장</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/enDlkcrtURaYyGNB1q5Teg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4d04yUTNNR05oTmpkallXUTBaREF6TmpRM1l5NXFjR2NpZlEuTTRUeW5ucE55QUkydG4xekNMU2pNdGtvRzdMOXEycVBNcTZDVGIxd2RObw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">윌리엄 새들러</span>
+                <p class="m-auto text-secondary">조연 / 헤이우드</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/DPVh3P0XyH0ZmD7QQ7ZzLw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4eFlUZ3dPR1ZqTXpNeU5USTFOR1F4TldJd055NXFjR2NpZlEudmdoSEdldFBDWHdXX1JFQlZCQ2kxQWowZEFmcEtNWFpWa2FQNk9uLVRCcw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">클랜시 브라운</span>
+                <p class="m-auto text-secondary">조연 / 하들리</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/U8WqMKKWvHoTuEy14kKGqA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM5alpURTFaV1JrWVdGaFl6RXdNakJpTmpJeE9TNXFjR2NpZlEuNU5haW9GQUZ5c3luaU5wSndkRkk4b3preEVFR2NXU0ZEZ1pRWmpHZG16dw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">길 벨로우스</span>
+                <p class="m-auto text-secondary">조연 / 토미</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/LNx1qtnHm8dX7bYGfiPLhQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4ek16SmlZMkZoWm1Jek1qbG1OVFZrT1RsbU1TNXFjR2NpZlEueE84QmFGa0hQd3ZQbW9mSUJyc2hiZ1UtUFpQbkRCa1NYMWFablpIM2lTYw" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">마크 롤스톤</span>
+                <p class="m-auto text-secondary">조연 / 보그스 다이아몬드</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="d-flex align-items-center my-3">
+              <div>
+                <img class="actor" src="https://an2-img.amz.wtchn.net/image/v2/FkII-pPyhSaZFZDGnmopNw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1qUXdlREkwTUNKZExDSndJam9pTDNZeEwzQmxiM0JzWlM4ME5USTNaR0kwT1RNM1pHUmlZVFl5WlRBNE5DNXFjR2NpZlEuMEozX250UWhPdTdpZWdablQ4T1pkVDBCZFZ3RkNuNkZWX0MzUXJuc2c5MA" alt="">
+              </div>
+              <div class="px-4">
+                <span class="fw-bold fs-5">제임스 휘트모어</span>
+                <p class="m-auto text-secondary">조연 / 브룩스 하틀렌</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="my-5">
+
+          <h4 class="bg-primary text-dark bg-opacity-10 border-top py-2 px-3 fw-bold" id="scrollspyHeading3" >리뷰</h4>
+          <div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/T3hpeaUoLOEawhQXHdSDQg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZlazVOTlU1cVlsRktSelV5Tmk5d2NtOW1hV3hsTHpFMk5UVTJORGM0TURnek1UZzRNekV6TmpJaWZRLnAzRlNvQzA5MVZDdUgtN2xvX0xTR3BveTJZR0FkRk1ObDZlN1ZVeWxHSEU" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">순응하는 삶은 안락함을 주지만 과연 그것이 생명력 있는 삶일까. 이 동화 같은 이야기는 자유를 갈망하는 모든 이들에게 희망이 되어준다. 삶을 긍정하는 예술. 그 아름다움과 생명력</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/v0h4dOG9GJQr-368nVzR9w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZaR1ZtWVhWc2RGOXdjbTltYVd4bFgybHRZV2RsTDNCeWIyWnBiR1ZmTURVdWNHNW5JbjAuXy1rVFotWHVNaTlaVnp0MHkzbkEzNVl2X1hrcDg0OEp2MjN5X2ZnbElFWQ" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">희망을 마음에 품고
+                    원대한 꿈을 향해 조금씩 전진하다</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/uDjaqllGhl8U3S3VNPD4Hg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZVV2Q1TlRGQ1NrRlFOM2hFYWk5d2NtOW1hV3hsTHpFMk5qRTRPVFU0TWpVeE5EVTVOamM1TlRjaWZRLmtjM2F2dzI0OUtMNzd1SUN5QU1YcG9saHUySFUwT3NpWlBrRVpDekYtd28" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">‘재미있다’ 라는 말은 이 영화를 두고 하는 말
+                    단언컨데 남녀노소 절대 호불호 없는 영화 (무족건 호)</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/ihfFd3MjDvBeno1dtch5lA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZhbUZsTlZjeWJqRkhkakZRTXk5d2NtOW1hV3hsTHpFMk16QXpOek00T0RJeE5UWXhOVFk1TWpnaWZRLlNlS0dsd3dCOTBKZVpHa1FoUnlITFlCMGk2YjQ2WnlzX19RVmFKQTFBeVk" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">쇼생크에서 평생을 보냈으니, 시스템이 통제하는 대로밖에 나는 살수없어.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/Kq7yhVzvedmKVEJNjPd76A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZOMmRrZUdRMFQxWkNSWGhIV1M5d2NtOW1hV3hsTHpFMk16RTBOamd6TlRFMk1EVTJPVFkzTmpnaWZRLjFjSzZTbUJvT1BraEVweGpyNWRCd2ZCemphX3RWTmtBMTV4WG1wd1lEMHM" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">자유로운 사람만이 느낄 수 있는 기쁨이라고 생각한다. 희망의 긴 여행을 떠나는 자유로운 사람. 태평양이 내 꿈에서처럼 푸르기를 희망한다.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/-wQH_QpXHA8d7RIhFjAaRw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZiVnBYY0hGTmEwcHJOWEpyYmk5d2NtOW1hV3hsTHpFMk5EVXpOekEwTkRBNE1UWXpOak0zTmpFaWZRLm44cEJ2dWJ4Yl9VZ0ViXzYzNjhzLW56Tlhub3lXXzhNR3ZTYzQwQ2pLZTA" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">앤디의 차분함이 기억에 오래 남음</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/Dj_4zCNQ2F3wiSCbrOjU_A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZZVGxNTlZCdlJVVk9kbmRuT0M5d2NtOW1hV3hsTHpFMk5qQXhOakk0T1RneU16STROell5TURraWZRLnFtbmhtV2VrbFlpeS1vTEFXdUZ5YnBrNHAxVEFEc0RjSXF2WnJuOWF1WGM" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">갇혀서 지냈던 사람들과의 피로 맺은 우정은 절대 못 잊지
+                    아픈 기억이지만 그 기억을 떠오르게 만드는 영화</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/VeVI5K63814hgkUEnSFGWw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZUWEk1Tlc1aWNEZGtOVnBRUnk5d2NtOW1hV3hsTHpFMk16QXdNVGM1TXpJNU5EZzROVEEyT0RnaWZRLm1jVjBOVTBVZDBtOER5d2szaEp5RW1GVG9ENlVkb2thZ2VUYjhjRWEycTQ" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">희망과는 거리가 먼 감옥에서 희망을 말하다</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/zMlpuruqCOnAV4_XSuy_DA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZValpQZGtzM09FVk5RblpPT0M5d2NtOW1hV3hsTHpFMk5UWTROVE0xT0RJME1EQTRNVFV6T1RZaWZRLlExUzJiWkdCajEySXdpYTVCbklDckJKa2YzNWJpV1JkY2JHMmZuZ0R1RlU" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-half"></i>
+                  </span>
+                  <p class="m-auto text-secondary">재밌으나 절대 5점은 주고 싶지 않은 심술</p>
+                </div>
+              </div>
+            </div> <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/T2B3M7UeKuQ-UboIQMnvfg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZaelkwY1hwdVVGSk5jVVZTTUM5d2NtOW1hV3hsTHpFMk5qRXdORGcwTmpnd05EVXhORGN6TWpZaWZRLmFTZ1NNbXBtbnFvZ2JxSHQ3azNLYy1zS1FldGhGMVJaT3RaeWhwRTVzMGs" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">희망은 인생의 정수.</p>
+                </div>
+              </div>
+            </div> <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/B4lY29XaGlPGddtEF24VPg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZaR1ZtWVhWc2RGOXdjbTltYVd4bFgybHRZV2RsTDNCeWIyWnBiR1ZmTURRdWNHNW5JbjAuQlRQcVBRYzBFVXFETGxPSEJTU2V5RFpiQy1WdVUzUnBvWGpfU0ZHTnRDWQ" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">금도를 넘은 것이 짜릿한 이유는 자유가 설명한다.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/AAGO7fXBUM6WyfEv_lYxsg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZhbUZsTlZkTE56UnFXalV4VUM5d2NtOW1hV3hsTHpFMk1qazNPVFExT0RVMU56QXdOREEyTmpJaWZRLkdKTUdVQzhfRTBFbGs4Z0d5Qkp6NnJMckUweWtNZ25jeHpiNkZFenQzbVk" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">보면서 언제쯤 탈출하려나 싶은데 그와중에 지루하다고 느낀 적은 없었음. 이래서 시간이 흘러도 꾸준히 언급되는 건가 싶었다.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="d-flex align-items-start my-3">
+                <div>
+                  <img class="user" src="https://an2-img.amz.wtchn.net/image/v2/aDTFhT3gXgakbS1PDDuJjg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk1UQXdlREV3TUNKZExDSndJam9pTDNZeUwzTjBiM0psTDNWelpYSXZNMEp1ZG5kc2VtdENjRFZRUVM5d2NtOW1hV3hsTHpFMk5UWXpORGMzTURBd01USXpOamswTURraWZRLkpmVU8yY0FQcF91elowd2xNTVg0X1lsekJ3Tm44M1RMbjI5Vk91dmZrc1E" alt="">
+                </div>
+                <div class="px-4">
+                  <span class="fw-bold fs-6">
+                    이성인
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                    <i class="text-warning bi bi-star-fill"></i>
+                  </span>
+                  <p class="m-auto text-secondary">너무 완벽한 영화.
+                    결말까지 내가 좋아하는 요소를 때려박은 최고의 영화.
+                    영화 끝나는게 이렇게 아쉬웠던 적은 정말 오랜만이었다.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </main>
+    <footer>
+      <!-- place footer here -->
+      <div class="">Web-bootstrap PJT, by___</div>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+      integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
