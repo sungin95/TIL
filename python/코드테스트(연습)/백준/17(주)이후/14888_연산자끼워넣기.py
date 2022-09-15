@@ -5,27 +5,23 @@ sys.stdin = open("14888.txt", "r")
 
 n = input()
 num = deque(map(int, input().split()))
-addition, subtraction, multiplication, division = map(int, input().split())
+A, B, C, D = map(int, input().split())
 answer_list = []
 division_list = []
+visited = [False] * (N+1)
+addition = ['a'] * A
+subtraction = ['b'] * B
+multiplication = ['c'] * C
+division = ['d'] * D
 
 
 def dfs():
-    global addition
-    global subtraction
-    global multiplication
-    global division
-    if len(num) == 1:
-        answer_list.append(num[0])
-        return
-    else:
-        for i in [addition, subtraction, multiplication, division]:
-            if i != 0:
-                pass
+    pass
 
 
 dfs()
+print(addition, subtraction, multiplication, division)
 print(num)
 print(answer_list)
-print(max(list(answer_list)))
-print(min(list(answer_list)))
+# print(max(list(answer_list)))
+# print(min(list(answer_list)))
