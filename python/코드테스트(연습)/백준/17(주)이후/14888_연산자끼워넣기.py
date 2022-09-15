@@ -1,27 +1,72 @@
-from collections import deque
+from copy import copy
 import sys
 sys.stdin = open("14888.txt", "r")
 
-
-n = input()
-num = deque(map(int, input().split()))
+n = int(input())
+num = list(map(int, input().split()))
 A, B, C, D = map(int, input().split())
+A_list = ['+']*A
+B_list = ['-']*B
+C_list = ['*']*C
+D_list = ['//']*D
+ABCD_list = [A_list, B_list, C_list, D_list]
+
+arr = []
+
 answer_list = []
-division_list = []
-visited = [False] * (N+1)
-addition = ['a'] * A
-subtraction = ['b'] * B
-multiplication = ['c'] * C
-division = ['d'] * D
 
 
 def dfs():
-    pass
+    global answer
+    global dp
+    if len(arr) == n-1:
+        answer = 0
+        dp = copy(num[0])  # 중간 계산된 값을 저장하기 위해
+        # print(*arr)
+        for j in range(n-1):
+            if arr[j] == '+':
+                answer = dp + num[j+1]
+                dp = copy(answer)
+            elif arr[j] == '-':
+                answer = dp - num[j+1]
+                dp = copy(answer)
+            elif arr[j] == '*':
+                answer = dp * num[j+1]
+                dp = copy(answer)
+            elif arr[j] == '//':
+                if dp >= 0:
+                    answer = dp // num[j+1]
+                    dp = copy(answer)
+                else:
+                    answer = -(abs(dp) // num[j+1])
+                    dp = copy(answer)
+        answer_list.append(answer)
+        return
+    else:
+        for i in ['+', '-', '*', '//']:
+            if i == '+':
+                if arr.count(i) != A:
+                    arr.append(i)
+                    dfs()
+                    arr.pop()
+            if i == '-':
+                if arr.count(i) != B:
+                    arr.append(i)
+                    dfs()
+                    arr.pop()
+            if i == '*':
+                if arr.count(i) != C:
+                    arr.append(i)
+                    dfs()
+                    arr.pop()
+            if i == '//':
+                if arr.count(i) != D:
+                    arr.append(i)
+                    dfs()
+                    arr.pop()
 
 
 dfs()
-print(addition, subtraction, multiplication, division)
-print(num)
-print(answer_list)
-# print(max(list(answer_list)))
-# print(min(list(answer_list)))
+answer_list.sort()
+print(answer_list[-1])  # 최댓값
+print(answer_list[0])  # 최솟값
