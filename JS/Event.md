@@ -30,23 +30,21 @@ target.addEventListener(type, listener(함수)[, options])
 # 실습 문법 정리
 
 ```js
+// btn1
+const btn1 = document.querySelector('#btn1')
+// btn1이 클릭되면 함수실행
+btn1.addEventListener('click', function() {
+    // h1 태그를 잡아서
+    const h1 = document.querySelector('h1')
+    // 클래스 blue를 토글하자. 
+    h1.classList.toggle('blue')
+})
 
-
- // btn1
-    const btn1 = document.querySelector('#btn1')
-    // btn1이 클릭되면 함수실행
-    btn1.addEventListener('click', function() {
-      // h1 태그를 잡아서
-      const h1 = document.querySelector('h1')
-      // 클래스 blue를 토글하자. 
-      h1.classList.toggle('blue')
-    })
-
-    // input
-    const input = document.querySelector('input')
-    input.addEventListener('input', function(e) {
-      console.log(e.target.value)
-    })// 만들어서 붙이기
+// input
+const input = document.querySelector('input')
+input.addEventListener('input', function(e) {
+    console.log(e.target.value)
+})// 만들어서 붙이기
 console.log('hello, js!')
 // h1 요소(element)를 만들고
 const title = document.createElement('h1')
@@ -85,15 +83,15 @@ input.addEventListener('input', function(e) {
 
 
 
-## **이벤트의 종류**
+# 이벤트의 종류
 
 대표적인 이벤트를 소개한다.
 
-자세한 사항은 [Event referenceVisit Website](https://developer.mozilla.org/en-US/docs/Web/Events)을 참조 바란다.
+자세한 사항은 [Event referenceVisit Website](https://developer.mozilla.org/ko/docs/Web/Events)을 참조 바란다.
 
 
 
-#### **UI Event**
+## UI Event
 
 | Event    | Description                                                  |
 | -------- | ------------------------------------------------------------ |
@@ -106,7 +104,7 @@ input.addEventListener('input', function(e) {
 
  
 
-#### **Keyboard Event**
+## Keyboard Event
 
 | Event     | Description                                                  |
 | --------- | ------------------------------------------------------------ |
@@ -117,7 +115,7 @@ input.addEventListener('input', function(e) {
 
  
 
-#### **Mouse Event**
+## Mouse Event
 
 | Event       | Description                                                  |
 | ----------- | ------------------------------------------------------------ |
@@ -133,7 +131,7 @@ input.addEventListener('input', function(e) {
 
  
 
-#### **Focus Event**
+## Focus Event
 
 | Event              | Description               |
 | ------------------ | ------------------------- |
@@ -142,7 +140,7 @@ input.addEventListener('input', function(e) {
 
  
 
-#### **Form Event**
+## Form Event
 
 | Event      | Description                                                 |
 | ---------- | ----------------------------------------------------------- |
@@ -154,7 +152,7 @@ input.addEventListener('input', function(e) {
 
  
 
-#### **Clipboard Event**
+## Clipboard Event
 
 | Event | Description            |
 | ----- | ---------------------- |
@@ -162,9 +160,7 @@ input.addEventListener('input', function(e) {
 | copy  | 콘텐츠를 복사할 때     |
 | paste | 콘텐츠를 붙여넣기할 때 |
 
-
-
-## 이벤트 막기
+# 이벤트 막기
 
 stopPropagation
 
@@ -183,6 +179,8 @@ function logEvent(event) {
 3. `stopPropagation`로 버블링을 막아놓은 영역에선 분석 시스템의 코드가 동작하지 않기 때문에, 분석이 제대로 되지 않습니다. 안타깝게도 `stopPropagation`을 사용한 영역은 '죽은 영역(dead zone)'이 되어버립니다.
 
 이벤트 버블링을 막아야 하는 경우는 거의 없습니다. 버블링을 막아야 해결되는 문제라면 커스텀 이벤트 등을 사용해 문제를 해결할 수 있습니다. 커스텀 이벤트 사용 방법은 추후에 다루겠습니다. 핸들러의 `event` 객체에 데이터를 저장해 다른 핸들러에서 읽을 수 있게 하면, 아래쪽에서 무슨 일이 일어나는지를 부모 요소의 핸들러에게 전달할 수 있으므로, 이 방법으로도 이벤트 버블링을 통제할 수 있습니다.
+
+
 
 
 

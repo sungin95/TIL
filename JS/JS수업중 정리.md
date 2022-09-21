@@ -51,6 +51,9 @@ btn1.addEventListener('click', function() {
 modal에 사용
 클릭하면 class생성, 끄면 class 삭제
 */
+
+'use strict'; // 사용하면 실수하면 바로 티가 남
+<script defer src='a.js'><script> //이 형태가 좋다. 
 ```
 
 ## 주의
