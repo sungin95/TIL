@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        height: 80vh;
+      }
+      .center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .food_img {
+        height: 350px;
+        width: 550px;
+        object-fit: cover;
+      }
+      .hidden_img {
+        height: 600px;
+        animation-name: delay;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+      }
+      @keyframes delay {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="center position-relative">
+      <img
+        class="position-absolute top-50 start-50 translate-middle hidden_img"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi2MLNXffHqbPAd5Wc8F_UJOHr4tOZPIgpuabB3_Dv74eD9OBvxWFlE78d6ocpBjYpjf0&usqp=CAU"
+        alt=""
+        srcset=""
+      />
+      <h2>
+        오늘의 저녁 추천 메뉴는 <span class="text-danger">{{food}}</span>입니다.
+      </h2>
+      <img class="food_img" src="{{image}}" alt="" srcset="" />
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"
+      ></script>
+    </div>
+  </body>
+</html>
