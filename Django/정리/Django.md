@@ -34,6 +34,8 @@ mkdir
 
 `$python manage.py runserver` 장고 파일 실행
 
+`$python manage.py startapp` 장고 파일 실행
+
 `$ rm -r test-venv` (venv삭제)
 
 source ./activate
