@@ -1,0 +1,7 @@
+{% extends 'base.html' %} {% block content %} {% for i in paragraphs %}
+<div class="border-bottom mb-3">
+  {% for w in words %}
+  <span> {{w}} </span>
+  {% endfor %}
+</div>
+{% endfor %} {% endblock %}

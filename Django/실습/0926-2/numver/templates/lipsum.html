@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<form action="lipsum/check" , id="name">
+  <label for="inputtext" class="form-label">문단의 수</label>
+  <input type="number" id="inputtext" class="form-control" name="paragraphs" />
+  <label for="inputtext2" class="form-label">문단별 단어의 수</label>
+  <input type="number" id="inputtext2" class="form-control" name="words" />
+  <button type="submit" class="btn btn-primary">생성</button>
+</form>
+{% endblock %}

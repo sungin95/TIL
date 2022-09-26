@@ -1,23 +1,41 @@
-N, K = map(int, input().split())
+from collections import deque
+from copy import copy
 
-if N == 0 or K == 0:
+N, K = map(int, input().split())
+check = {
+    N: 0,
+}
+queue = deque()
+queue.append([0+N, 0])
+if N >= K:
     print(abs(N-K))
-elif N >= K:
-    print(abs(N-K))
+
 else:
-    cnt = 0
-    while N != K:
-        print(N, K)
-        if 2*N <= K:
-            N = 2*N
-            cnt += 1
-        elif 2*N == (K-1):
-            cnt += 2
+    if N == 0:
+        queue.popleft()
+        queue.append([1, 1])
+        check[1] = 1
+    while True:
+        A = queue.popleft()
+        # print(A)
+        if A[0] == K:
+            print(A[1])
             break
-        elif N < K:
-            N += 1
-            cnt += 1
-        else:
-            N -= 1
-            cnt += 1
-print(cnt)
+        A[1] += 1  # cnt
+        if A[0] >= K+2:
+            continue
+        if A[0] == 0:
+            continue
+        B = copy(A[0]-1)
+        if check.get(B) == None:
+            check[B] = A[1]
+            queue.append([B, A[1]])
+        C = copy(A[0] + 1)
+        if check.get(C) == None:
+            check[C] = A[1]
+            queue.append([C, A[1]])
+        D = copy(2*A[0])
+        if check.get(D) == None:
+            check[D] = A[1]
+            queue.append([D, A[1]])
+# print(check)
