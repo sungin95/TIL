@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %}
+<a href="edit">새글 쓰기</a>
+{% for con in contents %}
+<h1>{{ con.title }}</h1>
+<h1>{{ con.content }}</h1>
+{% endfor %} {% endblock %}

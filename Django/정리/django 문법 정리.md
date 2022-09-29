@@ -96,6 +96,7 @@ settings.py 에서
 from django.urls import path, include
 
 path('articles/'include('articles.urls')),
+include는 특이하게 .으로 나눈다. 
 ```
 
 
@@ -151,3 +152,12 @@ Article.objects.create(content=content)
 
 
 
+{% if todo.completd %}
+
+
+
+{% else %}
+
+
+
+{% endif %}
