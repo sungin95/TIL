@@ -14,6 +14,7 @@ def create(request):
     todo__priority = request.GET.get("todo__priority")
     todo__deadline = request.GET.get("todo__deadline")
     todo__state = request.GET.get("todo__state")
+    print(type(todo__work))
     Todo.objects.create(
         content=todo__work,
         priority=todo__priority,
