@@ -101,9 +101,17 @@ index.html (자동으로 만들기 까지 해줌)
 
 
 
+이전글 가져요기
+
+{{ article_form.as_p }}
 
 
 
+이제는 실제 값을 바꾸는 과정이 필요하다.
+
+
+
+instance=article 이걸 계속 해 주어야 한다. 
 
 
 
