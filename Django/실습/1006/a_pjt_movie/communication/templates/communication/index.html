@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">pk</th>
+        <th scope="col">영화 제목</th>
+      </tr>
+    </thead>
+    <tbody>
+      <a href="{% url 'communication:create' %}">나도 쓰기</a>
+      {% for movie in movies %}
+        <tr>
+          <th scope="row">{{movie.pk}}</th>
+          <td>
+            <a href="{{movie.pk}}">{{movie.title}}</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

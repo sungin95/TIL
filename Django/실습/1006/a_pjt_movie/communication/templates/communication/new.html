@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between">
+    <h1>{{movie.title}}</h1>
+    <h6>{{movie.running_time}}분</h6>
+  </div>
+  <p class="text-secondary">"{{movie.summary}}"</p>
+  <div>
+    <button type="submit" class="btn btn-outline-success" onclick="location.href='update'">수정</button>
+    <button type="button" class="btn btn-outline-danger" onclick="location.href='delete'">삭제</button>
+  </div>
+{% endblock %}
