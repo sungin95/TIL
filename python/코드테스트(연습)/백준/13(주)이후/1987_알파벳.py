@@ -4,8 +4,11 @@ input = sys.stdin.readline
 
 Y,X = map(int, input().split())
 board = []
+alphabet = set()
 for y in range(Y):
     data = input()
+    for i in data:
+        alphabet.add(i)
     board.append([])
     for chr in data:
         board[y].append(chr)
@@ -26,12 +29,12 @@ while stack:
     visited.append(stack_a[0]) # 내가 간 길에 순서에 맞게 기록이 되어 있습니다. 
     dy = [1,-1,0,0]
     dx = [0,0,1,-1]
-    print(cnt)
-    print(visited)
-    print(stack)
+    # print(cnt)
+    # print(visited)
+    # print(stack)
     if max_ < cnt:
         max_ = cnt # 맥스 최신화 
-        if max_ == 26: # 이때 max값이 26이라면 알파벳 최대 숫자인 26을 넘기지 못합니다. 
+        if max_ == (len(alphabet)-1): # 이때 max값이 속에 포함되어 있는 알파벳 갯수보다 크지 않습니다. -1은 /n가 생겨서 빼주었습니다. 
             break      # 시간을 줄이기 위해 만들었습니다. 
     cnt += 1
     for i in range(4):

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %}
 {% block content %}
   {% load django_bootstrap5 %}
   {% bootstrap_css %}
@@ -7,5 +7,18 @@
     {% csrf_token %}
     {% bootstrap_form movie_form %}
     <input class="btn btn-primary" type="submit" value="추가">
+    {% bootstrap_button button_type = "submit" content = "OK" %}
   </form>
-{% endblock %}
+{% endblock %} {% endcomment %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<h1>글쓰기</h1>
+<form action="" method="post">
+  {% csrf_token %}
+  {% bootstrap_form movie_form %}
+  {# movie_form.as_p #}
+  <input type="submit" value="글쓰기"/>
+  {% bootstrap_button button_type="submit" content="OK" button_class="btn-primary col-3"%}
+</form>
+

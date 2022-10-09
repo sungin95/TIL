@@ -50,5 +50,12 @@ def update(request, pk):
 
 def delete(request, pk):
     select_movie = Movie.objects.get(pk=pk)
-    select_movie.delete()
-    return redirect("communication:index")
+    if request.method == "POST":
+        select_movie.delete()
+        return redirect("communication:index")
+    else:
+        movie_form = MovieForm(instance=select_movie)
+        context = {
+            "movie_form": movie_form,
+        }
+    return render(request, "communication/update.html", context)

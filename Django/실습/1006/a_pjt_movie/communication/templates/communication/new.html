@@ -5,8 +5,11 @@
     <h6>{{movie.running_time}}분</h6>
   </div>
   <p class="text-secondary">"{{movie.summary}}"</p>
-  <div>
-    <button type="submit" class="btn btn-outline-success" onclick="location.href='update'">수정</button>
-    <button type="button" class="btn btn-outline-danger" onclick="location.href='delete'">삭제</button>
-  </div>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-outline-success mx-3" onclick="location.href='{% url 'communication:update' movie.pk %}' ">수정</button>
+    <form action="{% url 'communication:delete' movie.pk %}" method="POST" class="">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger" value="삭제">삭제</button>
+    </div>
+  </form>
 {% endblock %}
