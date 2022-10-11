@@ -1,5 +1,5 @@
 """
-ASGI config for a_pjt_review project.
+ASGI config for join project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'a_pjt_review.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'join.settings')
 
 application = get_asgi_application()
