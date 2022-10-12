@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <a href="{% url 'accounts:update' %}">회원정보수정</a>
+  <form action="{% url 'accounts:delete' user.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="회원탈퇴">
+  </form>
+  <h3>아이디:
+    {{ user.username }}</h3>
+  <h3>이메일:
+    {{ user.email }}</h3>
+  <p>가입날짜:
+    {{ user.date_joined }}</p>
+{% endblock content %}
