@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% if request.user.is_authenticated %}
+    <h3>Hello,
+      {{ user }}</h3>
+    <form action="{% url 'accounts:logout' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+    <a href="{% url 'accounts:update' %}">회원정보 수정</a>
+    <form action="{% url 'accounts:delete' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="회원탈퇴">
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:signup' %}">signup</a>
+    <a href="{% url 'accounts:login' %}">login</a>
+  {% endif %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">pk</th>
+        <th scope="col">ID</th>
+        <th scope="col">email</th>
+        <th scope="col">join date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user_ in users %}
+        <tr>
+          <th scope="row">{{ user_.pk }}</th>
+          <td>
+            <a href="{% url 'accounts:detail' user_.pk %}">{{ user_.username }}</a>
+          </td>
+          <td>{{ user_.email }}</td>
+          <td>{{ user_.date_joined }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}

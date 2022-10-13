@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h1 scope="row">{{ user_.pk }}</h1>
+  <h1>{{ user_.username }}</h1>
+  <h1>{{ user_.email }}</h1>
+  <h1>{{ user_.date_joined }}</h1>
+
+{% endblock content %}
