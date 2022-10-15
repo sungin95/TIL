@@ -36,6 +36,8 @@ def signup(request):
 def login(request):
     if request.user.is_authenticated:
         return redirect("accounts:index")
+    print("리퀘스트", request)
+    print("리퀘스트POST", request.POST)
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -62,6 +64,7 @@ def detail(request, pk):
     return render(request, "accounts/detail.html", context)
 
 
+@login_required
 def update(request):
     if request.method == "POST":
         form = CustomUserChangeForm(request.POST, instance=request.user)
@@ -94,4 +97,6 @@ def change_password(request):
 def delete(request):
     request.user.delete()
     auth_logout(request)
+    print("삭제")
+    print(request.user)
     return redirect("accounts:login")

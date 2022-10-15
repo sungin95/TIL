@@ -117,6 +117,13 @@ AUTH_USER_MODEL = "accounts.User"
 
 
 
+# 만드는 과정
+
+우선 어제 했던 회원가입 과정을 반복해야 했다. 
+
+회원가입을 하기 위해서는 
+
+modelForm을 활용해 view함수를 if,else구문을 이용해 만든것과 똑같은 함수를 만들면 되는데. 한 가지가 다르다. 
 
 
 
@@ -124,4 +131,6 @@ AUTH_USER_MODEL = "accounts.User"
 
 
 
+nslookup www.google.com
 
+tracert www.google.com
