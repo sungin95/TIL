@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <form action="" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% bootstrap_form article_form %}
+
+    {% bootstrap_button button_type="submit" content="OK"%}
+    {% bootstrap_button button_type="reset" content="Cancel"%}
+    {% comment %} {% render_field article_form.title type="search"%} {% endcomment %}
+  </form>
+{% endblock content %}
