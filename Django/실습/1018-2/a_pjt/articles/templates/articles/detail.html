@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <h2 class="text-center fw-bold">{{article.title}}</h2>
+  <hr/>
+
+  <p>{{article.content}}</p>
+
+  <div class="d-flex">
+    <button type="submit" class="btn btn-outline-dark" onclick="location.href='{% url 'articles:update' article.pk %}' ">
+      수정
+    </button>
+    <form class="mx-2" action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-outline-danger">삭제</button>
+    </form>
+
+  </div>
+  <form action="{% url 'articles:create_comment' article.pk %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-outline-dark">댓글 달기</button>
+  </form>
+  <h3>{{ comments|length }}개의 댓글</h3>
+  {% for comment in comments %}
+    <div class="d-flex justify-content-between border-bottom">
+      <span>{{comment.content}}</span>
+      <div>
+        <form class="mx-2" action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline-danger">삭제</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
