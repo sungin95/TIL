@@ -1,0 +1,52 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+    {% bootstrap_css %}
+  </head>
+  {% comment %} <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'accounts:index' %}">Movie</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'accounts:logout' %}">로그아웃</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:update' %}">회원 정보 수정</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:change_password' %}">비밀 번호 수정</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:signup' %}">회원가입</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'accounts:login' %}">로그인</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5"> {% endcomment %}
+
+      {% block content %}{% endblock content %}
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    {% bootstrap_javascript %}
+  </body>
+
+</html>
