@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>123</h1>
+  {% for article in articles %}
+  <a href="{% url 'articles:detail' article.pk %}" class="">
+      <div class="card col-12 col-sm-6 col-lg-4 col-xl-3" style="">
+          {% comment %} {% if article.image %}
+          <img src="{{ article.image.url }}" class="card-img-top" alt="...">
+          {% else %}
+          <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top">
+          {% endif %} {% endcomment %}
+          <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top" alt="...">
+          <div class="card-body">
+              <h5 class="card-title">{{ article.title }}</h5>
+              <p class="card-text text-muted">{{ article.user.username }}</p>
+            </div>
+        </div>
+    </a>
+  {% endfor %}
 {% endblock content %}
