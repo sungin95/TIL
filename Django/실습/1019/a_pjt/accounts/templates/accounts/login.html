@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <h1>login</h1>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-outline-dark" onclick="location.href='{% url 'accounts:index' %}' ">로그인</button>
+  </form>
+{% endblock content %}
