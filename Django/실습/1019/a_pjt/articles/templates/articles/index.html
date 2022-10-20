@@ -1,37 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
-      {% for article in articles %}
-        <div class="col">
-
-              <a href="{% url 'articles:detail' article.pk %}" style="text-decoration: none; color:black">
-                  <div class="">
-                  {% if article.thumbnail %}
-                  <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="..." style="">
-                  {% else %}
-                  <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top">
-                  {% endif %}
-                <h5 class="card-title">{{ article.title }}</h5>
-                <p>{{ article.user.username }}</p>
-              </div>
-            </a>
-
-        </div>
-      {% endfor %}
-    </div>    
-   
-
-{% comment %} <main class="row">
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
     {% for article in articles %}
-    <div class="card col col-12 col-sm-6 col-lg-4 col-xl-3" style="">
-        
-        <div class="card-body">
+      <div class="col">
+
+        <a href="{% url 'articles:detail' article.pk %}" style="text-decoration: none; color:black">
+          <div class="">
+            {% if article.thumbnail %}
+              <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="..." style="">
+            {% else %}
+              <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top">
+            {% endif %}
             <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text text-muted">{{ article.user.username }}</p>
-        </div>
-    </div>
-    <a href="{% url 'articles:detail' article.pk %}">
-    </a>
-</main> {% endcomment %}
+            <p>{{ article.user.username }}</p>
+          </div>
+        </a>
+
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}

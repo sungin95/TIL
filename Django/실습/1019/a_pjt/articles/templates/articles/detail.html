@@ -10,14 +10,29 @@
     {% endfor %}
   {% endif %}
   <h1>{{ article.title }}</h1>
+  {% if article.thumbnail %}
+    <img src="{{ article.thumbnail.url }}" class="card-img-top" alt="..." style="width: 500px; height: 500px;">
+  {% else %}
+    <img src="https://dummyimage.com/1200x960/000000/c4c4c4" class="card-img-top" style="width: 500px; height: 500px;">
+  {% endif %}
   <p>{{ article.content }}</p>
 
   <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
     {% csrf_token %}
     {% bootstrap_form comment_form %}
-    <button type="submit" class="btn btn-outline-dark">제출</button>
+    <button type="submit" class="btn btn-outline-primary">댓글</button>
   </form>
   {% for comment in article_comments %}
-    <p>{{ comment.content }}</p>
+    <div>
+      <p>{{ comment.content }}</p>
+      <div class="d-flex justify-content-end">
+        <form action="{% url 'articles:comment_delete' article.pk comment.pk%}" method="post">
+          {% csrf_token %}
+          {% if request.user == comment.user %}
+            <button type="submit" class="btn btn-outline-danger">삭제</button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
   {% endfor %}
 {% endblock content %}

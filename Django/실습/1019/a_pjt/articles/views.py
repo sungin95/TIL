@@ -61,7 +61,7 @@ def update(request, pk):
         }
         return render(request, "articles/update.html", context)
     else:
-        return HttpResponseForbidden()  # 이거 잘 작동되는 건지 모르겠네요.
+        return HttpResponseForbidden()
 
 
 @login_required
@@ -72,23 +72,32 @@ def delete(request, pk):
             article.delete()
             return redirect("articles:index")
     else:
-        return HttpResponseForbidden()  # 이거 잘 작동되는 건지 모르겠네요.
+        return HttpResponseForbidden()
 
 
 @login_required
-def comment_create(request, pk):
-    article = Article.objects.get(pk=pk)
-    if request.user == article.user:
-        if request.method == "POST":
-            form = CommentForm(request.POST)
-            if form.is_valid():
-                comment = form.save(commit=False)
-                comment.user = request.user
-                comment.article = article
-                comment.save()
-                messages.success(request, "댓글 달기 성공.")
-                return redirect("articles:detail", article.pk)
-        messages.warning(request, "잘못된 형식의 댓글.")
-        return redirect("articles:detail", article.pk)
+def comment_create(request, artice_pk):
+    article = Article.objects.get(pk=artice_pk)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.article = article
+            comment.save()
+            messages.success(request, "댓글 달기 성공.")
+            return redirect("articles:detail", article.pk)
     else:
-        return HttpResponseForbidden()  # 이거 잘 작동되는 건지 모르겠네요.
+        return HttpResponseForbidden()
+
+
+def comment_delete(request, artice_pk, comment_pk):
+    article = Article.objects.get(pk=artice_pk)
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user == comment.user:
+        if request.method == "POST":
+            comment.delete()
+            return redirect("articles:detail", article.pk)
+    else:
+        return HttpResponseForbidden()
