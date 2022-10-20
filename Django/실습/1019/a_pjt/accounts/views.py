@@ -99,3 +99,15 @@ def update(request):
         "form": form,
     }
     return render(request, "accounts/update.html", context=context)
+
+
+@login_required
+def profile(request):
+    user_ = request.user
+    articles = user_.article_set.all()
+    comments = user_.comment_set.all()
+    context = {
+        "articles": articles,
+        "comments": comments,
+    }
+    return render(request, "accounts/profile.html", context)

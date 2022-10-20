@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <div class="d-flex justify-content-between">
+    <div>
+
+      <h1>내가 쓴 글</h1>
+      {% for article in articles %}
+        <div>
+          <a href="{% url 'articles:detail' article.pk %}">
+            <p>{{ article.title }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="d-flex justify-content-end flex-column">
+      <h1>내가 쓴 댓글</h1>
+      {% for comment in comments %}
+        <p class="d-flex justify-content-end">{{ comment.content }}
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

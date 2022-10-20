@@ -92,6 +92,7 @@ def comment_create(request, artice_pk):
         return HttpResponseForbidden()
 
 
+@login_required
 def comment_delete(request, artice_pk, comment_pk):
     article = Article.objects.get(pk=artice_pk)
     comment = Comment.objects.get(pk=comment_pk)
