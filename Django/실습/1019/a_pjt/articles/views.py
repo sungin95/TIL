@@ -3,8 +3,11 @@ from .models import Article, Comment
 from .forms import ArticleForm, CommentForm
 from django.http import HttpResponseForbidden
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+
 def index(request):
     articles = Article.objects.order_by("-pk")
     context = {
@@ -13,9 +16,10 @@ def index(request):
     return render(request, "articles/index.html", context)
 
 
+@login_required
 def create(request):
     if request.method == "POST":
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
             article.user = request.user
@@ -41,11 +45,12 @@ def detail(request, pk):
     return render(request, "articles/detail.html", context)
 
 
+@login_required
 def update(request, pk):
     article = Article.objects.get(pk=pk)
     if request.user == article.user:
         if request.method == "POST":
-            form = ArticleForm(request.POST, instance=article)
+            form = ArticleForm(request.POST, request.FILES, instance=article)
             if form.is_valid():
                 form.save()
                 return redirect("articles:detail", article.pk)
@@ -59,6 +64,7 @@ def update(request, pk):
         return HttpResponseForbidden()  # 이거 잘 작동되는 건지 모르겠네요.
 
 
+@login_required
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
     if request.user == article.user:
@@ -69,6 +75,7 @@ def delete(request, pk):
         return HttpResponseForbidden()  # 이거 잘 작동되는 건지 모르겠네요.
 
 
+@login_required
 def comment_create(request, pk):
     article = Article.objects.get(pk=pk)
     if request.user == article.user:
