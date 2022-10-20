@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm, ProfileForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 # Create your views here.
 @login_required
@@ -19,8 +20,11 @@ def index(request):
 def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
+        profile_ = Profile()
         if form.is_valid():
             user = form.save()
+            profile_.user = user
+            profile_.save()
             auth_login(request, user)  # 회원가입과 동시에 로그인을 시키기 위해
             return redirect("accounts:index")
     else:
@@ -106,8 +110,27 @@ def profile(request):
     user_ = request.user
     articles = user_.article_set.all()
     comments = user_.comment_set.all()
+    profile_ = user_.profile_set.all()[0]
     context = {
         "articles": articles,
         "comments": comments,
+        "profile": profile_,
     }
     return render(request, "accounts/profile.html", context)
+
+
+@login_required
+def profile_update(request):
+    user_ = get_user_model().objects.get(pk=request.user.pk)
+    current_user = user_.profile_set.all()[0]
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=current_user)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:profile")
+    else:
+        form = ProfileForm(instance=current_user)
+    context = {
+        "profile_form": form,
+    }
+    return render(request, "accounts/profile_update.html", context)
