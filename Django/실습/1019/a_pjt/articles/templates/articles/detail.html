@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 {% block content %}
+  {% if messages %}
+    <!-- 메시지 -->
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
   <h1>{{ article.title }}</h1>
+  <p>{{ article.content }}</p>
+
+  <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form comment_form %}
+    <button type="submit" class="btn btn-outline-dark">제출</button>
+  </form>
+  {% for comment in article_comments %}
+    <p>{{ comment.content }}</p>
+  {% endfor %}
 {% endblock content %}
