@@ -62,7 +62,7 @@ axios.get(URL)
     const form = document.querySelector('#follow-form’)
     form.addEventListener('submit', function (event) {
         event.preventDefault()
-            axios({
+        axios({
             method: 'post＇,
             url: `/accounts/${???}/follow/`,
         })
@@ -77,13 +77,13 @@ axios.get(URL)
 ```html
 <!-- accounts/profile.html -->
 
-<form id="follow-form" data-user-id="{{ person.pk }}">
+<form id="follow-form" data-user-id="{{ user.pk }}">
 	...
 </form>
 
 <!-- accounts/profile.html -->
 <script>
-    const form = document.querySelector('#follow-form’)
+    const form = document.querySelector("#follow-form")
     form.addEventListener('submit', function (event) {
         event.preventDefault()
         
@@ -235,7 +235,7 @@ axios({
     })
 ```
 
-#### view에서 변수화 해서 보내주rh
+#### view에서 변수화 해서 보내주고
 
 ```python
 # accounts/views.py
@@ -268,8 +268,8 @@ return redirect('accounts:login')
                 ...
                 const followersCountTag = document.querySelector('#followers-count＇)
                 const followingsCountTag = document.querySelector('#followings-count’)
-                followersCountTag.innerText = followersCount
-                followingsCountTag.innerText = followingsCount
+                followersCountTag.innerText = response.data.followersCount
+                followingsCountTag.innerText = response.data.followingsCount
             })
 </script>
 ```
@@ -455,3 +455,49 @@ parsing
    - 댓글 정보를 보내서
 3) DOM 조작을 어떻게 할지 
    - 댓글 목록을 보여 준다. 
+
+
+
+
+
+
+
+
+
+```python
+@login_required
+def like(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    # 만약에 로그인한 유저가 이 글을 좋아요를 눌렀다면,
+    # if article.like_users.filter(id=request.user.id).exists():
+    if request.user in article.like_users.all(): 
+        # 좋아요 삭제하고
+        article.like_users.remove(request.user)
+        is_liked = False
+    else:
+        # 좋아요 추가하고 
+        article.like_users.add(request.user)
+        is_liked = True
+    # 상세 페이지로 redirect
+    context = {'isLiked': is_liked, 'likeCount': article.like_users.count()}
+    return JsonResponse(context)
+
+.then(response => {
+      console.log(response)
+      console.log(response.data)
+      // event.target.classList.toggle('bi-heart')
+      // event.target.classList.toggle('bi-heart-fill')
+      if (response.data.isLiked === true) {
+        event.target.classList.add('bi-heart-fill')
+        event.target.classList.remove('bi-heart')
+      } else {
+        event.target.classList.add('bi-heart')
+        event.target.classList.remove('bi-heart-fill')
+      }
+      const likeCount = document.querySelector('#like-count')
+      likeCount.innerText = response.data.likeCount
+    })
+```
+
+
+
