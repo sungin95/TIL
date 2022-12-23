@@ -22,3 +22,35 @@
 # stack에서 시작점을 빼 주고 연결된 곳을 다시 넣고
 # 넣은 곳은 방문 처리 해 준다.
 #
+from pprint import pprint
+import sys
+
+sys.stdin = open("2606.txt", "r")
+
+N = int(input())
+M = int(input())
+
+graph = []
+visited = []
+
+for i in range(N + 1):
+    graph.append([])
+    visited.append([False])
+
+for _ in range(M):
+    v1, v2 = map(int, input().split())
+    graph[v1].append(v2)
+    graph[v2].append(v1)
+
+cnt = 0
+start = 1
+stack = [start]
+visited[1] = False
+while stack:
+    cur = stack.pop()
+    for i in graph[cur]:
+        if visited[i] is not False:
+            stack.append(i)
+            visited[i] = False
+            cnt += 1
+print(cnt)
