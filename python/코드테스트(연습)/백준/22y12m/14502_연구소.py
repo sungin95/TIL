@@ -115,3 +115,12 @@ for aa in range(N * M):
                 board[delete_[0]][delete_[1]] = "0"
 
 print(max_)
+
+
+# 리스트에
+# 리스트를 넣는 경우가있잖아여
+# result = [] 이런 리스트에
+# result.append([a, b])
+# result.append((a,b))
+# 이게 시간이 더 빨라요
+# 이뮤터블이라 계산이 더 빠른듯?
