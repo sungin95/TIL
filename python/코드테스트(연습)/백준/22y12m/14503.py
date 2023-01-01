@@ -16,6 +16,7 @@ for _ in range(N):
     data = input().split()
     room.append(data)
 
+# 이 문제는 어느 방향에서 시작하는지가 매우 중요합니다.
 # 북 동 남 서
 dy = [-1, 0, 1, 0]
 dx = [0, 1, 0, -1]
