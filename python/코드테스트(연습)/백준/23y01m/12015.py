@@ -1,7 +1,7 @@
 # 첫 골2문제... 설렌다. 나도 과연 풀 수 있을까???
-# import sys
+import sys
 
-# sys.stdin = open("12015.txt", "r")
+sys.stdin = open("12015.txt", "r")
 
 t = int(input())
 arr = list(map(int, input().split()))
@@ -10,12 +10,12 @@ arr = list(map(int, input().split()))
 def max_len(start, end, max_):
 
     max_list = [[start, arr[start], "up"]]
-    min_list = [[start, arr[start], "down"]]
+    min_list = []
 
     for i in range(start, end):
         if arr[i] > max_list[-1][1]:
             max_list.append([i, arr[i], "up"])
-        elif arr[i] < min_list[-1][1]:
+        if i != 0 and arr[i - 1] > arr[i]:
             min_list.append([i, arr[i], "down"])
 
     sum_list = max_list + min_list[1:]
@@ -31,8 +31,8 @@ def max_len(start, end, max_):
                     if max_ < max___:
                         max_ = max___
                     break
-    # print(sum_list, start, end)
-    # print(max_, "max_")
+    print(sum_list, start, end)
+    print(max_, "max_")
     return max_
 
 
