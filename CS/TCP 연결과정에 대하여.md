@@ -6,9 +6,9 @@ TCP 연결과정에 대하여
 
 전반적인 흐름은 이전에 정리했어요.
 
-[[Network\] OSI 7계층이란?](https://livenow14.tistory.com/54?category=993618)
+[Network\] OSI 7계층이란?](https://livenow14.tistory.com/54?category=993618)
 
-[[Network\] http의 특징과 각각에 대해 간략히 설명해 주세요](https://livenow14.tistory.com/45?category=993618)
+[Network\] http의 특징과 각각에 대해 간략히 설명해 주세요](https://livenow14.tistory.com/45?category=993618)
 
 
 
