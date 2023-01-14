@@ -20,6 +20,7 @@ list_2 = deque()
 for k in range(3):
     list_.append([0, k])
 
+# N이 1이나 2일떄는 dp[i - 3] 때문에 오류를 발생. 예외처리
 if N == 1:
     print(g_list[1])
 elif N == 2:
@@ -45,6 +46,7 @@ else:
             elif a[1] == 2:
                 a[1] = 0
                 list_.appendleft(a)
+            # 최대값으로 DP 최신화
             if dp[i] < list_[0][0]:
                 dp[i] = list_[0][0]
 
