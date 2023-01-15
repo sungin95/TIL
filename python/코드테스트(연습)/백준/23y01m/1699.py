@@ -1,32 +1,19 @@
-import math
+# DP의 핵심은 DP는 언제나 최소 or 최대값등 내가 원하는 값을 저장해 놓은 상태이고
+# 이전 DP들의 값의 의미를 파악해서 그 값과 비교해서 다음 값을 찾아나가는 과정이 아닐까 싶다.
+import sys
 
+sys.stdin = open("1699.txt", "r")
 
 N = int(input())
 
-max_cnt = [1000001]
+DP = [i for i in range(N + 1)]
 
-
-def case(N, N_root, cnt):
-    M = N
-    M_root = N_root
-    cnt_ = 0
-    while M:
-        M_root = math.floor(math.sqrt(M))
-        if M_root > N_root:
-            M_root = N_root
-        M -= M_root**2
-        cnt_ += 1
-        if cnt < cnt_:
+for i in range(N + 1):
+    for j in range(i + 1):
+        if j * j > i:
             break
-    if cnt > cnt_:
-        cnt = cnt_
-        max_cnt[0] = cnt_
-    if N_root - 1 > 0:
-        # print(N, N_root - 1, cnt)
-        case(N, N_root - 1, cnt)
+        else:
+            if DP[i] > DP[i - (j * j)] + 1:
+                DP[i] = DP[i - (j * j)] + 1
 
-
-N_root = math.floor(math.sqrt(N))
-
-case(N, N_root, 100001)
-print(max_cnt[0])
+print(DP[-1])
