@@ -12,12 +12,12 @@ for i in range(N):
     dp.append([])
     dp[-1] = [0] * (len(data) + 1)
 # print(triangle)
-# print(dp)
+pprint(dp)
 for i in range(N):
     for j in range(len(triangle[i])):
         if j == 0:
             dp[i + 1][j] = dp[i][j] + triangle[i][j]
         else:
             dp[i + 1][j] = max(dp[i][j], dp[i][j - 1]) + triangle[i][j]
-# pprint(dp)
+pprint(dp)
 print(max(dp[-1]))
