@@ -2,7 +2,7 @@ from collections import deque
 
 S = int(input())
 
-visited = [0 for i in range(S * 2)]
+visited = [[0 for i in range(S * 2)] for i in range(S)]
 queue = deque()
 queue.append((1, 0, 1))
 
