@@ -2,21 +2,25 @@ from collections import deque
 
 S = int(input())
 
-visited = [[0 for i in range(S * 2)] for i in range(S)]
+visited = [[0 for i in range(S + 1)] for i in range(S * 2)]
 queue = deque()
-queue.append((1, 0, 1))
+# 화면 값, 클립보드, cnt
+imo = 1
+clip = 0
+cnt = 1
+queue.append((imo, clip, cnt))
 
+visited[imo][clip] = cnt
 while queue:
-    if visited[S] != 0:
-        print(visited[S] - 1)
+    if clip < S != 0 and visited[S][clip]:
+        print(visited[S][clip] - 1)
         break
-    cur = queue.popleft()
-    visited[1] = 1
-    if 0 <= cur[0] - 1 and (cur[0] + cur[1]) < 2 * S:
-        queue.append((cur[0], cur[0], cur[2] + 1))
-        if visited[cur[0] + cur[1]] == 0 or visited[cur[0] + cur[1]] == cur[2] + 1:
-            queue.append((cur[0] + cur[1], cur[1], cur[2] + 1))
-            visited[cur[0] + cur[1]] = cur[2] + 1
-        if visited[cur[0] - 1] == 0 or visited[cur[0] - 1] == cur[2] + 1:
-            queue.append((cur[0] - 1, cur[1], cur[2] + 1))
-            visited[cur[0] - 1] = cur[2] + 1
+    imo, clip, cnt = queue.popleft()
+    if 0 <= imo - 1 and (imo + clip) < 2 * S and clip < S:
+        queue.append((imo, imo, cnt + 1))
+        if visited[imo + clip][clip] == 0:
+            queue.append((imo + clip, clip, cnt + 1))
+            visited[imo + clip][clip] = cnt + 1
+        if visited[imo - 1][clip] == 0:
+            queue.append((imo - 1, clip, cnt + 1))
+            visited[imo - 1][clip] = cnt + 1
