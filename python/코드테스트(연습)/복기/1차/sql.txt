@@ -1,0 +1,4 @@
+SELECT CONCAT(LEFT('abcd12', LENGTH('abcd12')-4), LPAD(RIGHT('abcd12', 4), 4, '0')) AS new_id;
+저기 'abcd12' 대신 id
+SELECT CONCAT(LEFT(id, LENGTH(id)-4), LPAD(RIGHT(id, 4), 4, '0')) AS new_id FROM id_table;
+id로 짠거도 있네
