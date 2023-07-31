@@ -15,3 +15,7 @@
 비밀번호에 @를 넣어서 바꾸어 주었다. @는 password와 host를 구분할때 사용해서 비밀번호에 @가 있으면 정보가 잘못 전달 된다. 
 
 sql_app이 (내 부모 폴더) 인식을 못해서 `from . import crud` 를 사용 못하고 `from crud import *`를 사용했다. 
+
+`  title = Column(String(150), index=True)`
+
+String에 (150) 을 붙여 글자 수 제한을 해 줘야 한다. 
