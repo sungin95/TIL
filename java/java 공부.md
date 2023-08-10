@@ -389,3 +389,245 @@ DI 장점
   - 느슨한 결합도
 - 변경에 유연해짐
   - 결합도가 낮은 객체끼지는 부품을 쉽게 갈아끼울 수 있음.
+
+
+
+# Part 2. 게시판 서비스
+
+## ch01. 프로젝트 기획
+
+### 개발 환경
+
+IntellJ
+
+Git, GitHub
+
+GitKraken
+
+### 프로젝트 기획- 개발 목적 이해하기
+
+#### 게시판 서비스 프로젝트의 목표
+
+- 누구나 이해하기 쉬운 소재로 명확한 기능 요구사항을 만든다. 
+- 요구사항을 구현하는데 도움이 되는 각종 문서 작업을 경험한다. 
+- 자바 + 스프링 부트로 프로젝트 요구사항을 실제로 구현하는 기술적인 방법을 익힌다. 
+- 최신 버전의 기술을 사용해 보면서 기술 동향을 파악하고, 새로운 문제와 해결 방법을 확인한다. 
+- 기획과 문서 작성부터 개발, 형상관리, 테스트, 배포까지 개발 프로세스 전반을 경험한다. 
+
+
+
+#### 다양한 형태의 문서 작업 -원활한 협업의 초석
+
+- 문서를 통해 개발할 프로젝트의 목적, 내용, 진행상황을 공유(왜 하는지가 특히 중요)
+  - 무엇을, 어떻게: 업무의 가이드. 동료의 생산성을 높여줌
+  - 왜: 함께 움직이는 원동력, 동료가 더 나은 방법을 제안하거나, 내 생각의 오류를 잡아줌
+- 내용이 구체적일 수록, 동료들의 프로젝트 개발 내용이 잘 동기화되고 진행이 막히지 않음
+  - 주의 - 과도한 정보의 범람, 업데이트되지 않았거나 잘못된 정보가 주는 혼란
+- 백업이 용이: 문서는 지나간 일을 다시 꺼내야 할 때 쉽게 찾게 도와줌
+- 기억은 짧고 왜곡되지만, 문서는 수정 가능하고 발전하며 오래 감
+- 업무 기록을 남김으로써 업무 진척 상황과 내 성과가 잘 드러남
+
+
+
+#### 이 게시판 만들기 프로젝트에서 해볼 문서 작업은...
+
+- diagrams.net(구 draw.io): 도메인과 ERD설계, 유즈케이스
+- 구글 시트: API 디자인
+- 깃 + 깃헙: 커밋 메시지 작성, 프로젝트 관리 및 협업 환경 꾸미기
+
+
+
+#### 개발의 목적 - 고객의 문제를 해결 (+ 하는 과정을 공부)
+
+- 고객의 니즈와 문제를 정리
+  - 고객이 원치 않거나 고객의 문제를 해결해 줄 수 없는 개발은 의미가 없다. 
+  - 공부가 목표 - 이 부분에서 다소 자유롭게 (실패가 용인됨)
+- 문제 -> 요구사항 -> 기능(feature)도출 -> 구현 방안의 기획 -> 개발 계획 수립 -> 실행
+- 위 모든 과정을 강의와 함께 공부, 연습해보자
+- 제약사항: 강의 프로젝트이므로, 기술 스택이 어느 정도 정해져 있음
+  - 제약 == 집중과 효율
+- 공부 목표의 특전: 가능한 한 최신 버전의 기술을 사용
+  - 최신 동향 파악
+  - 아직 밝혀지지 않은 이슈를 직접 경험 -> 해결 방법 찾기 -> 할 수 있다면 해결까지
+
+
+
+#### 이 게시판 만들기 프로젝트에서 해볼 개발 작업은...
+
+- IDE: IntelliJ IDEA 2022.1.1 (Ultimate Edition)
+  - Community Edition 은 무료지만 강의에서 활용할 스프링 부트 지원 기능이 동작하지 않음
+  - 협업에서 ultimate Edition 라이센스를 구매하여 지급해 주므로 강의 초점을 이에 맞춤
+- 언어: java 17
+- 프레임워크: spring boot 2.7.0
+- 빌드 도구: gradle 7.4.1
+- git GUI: GitKraken - git 형상 관리와 브랜치 전략 활용
+- 각종 개발 전략과 도메인 설계, 실무 디자인 패턴, 비즈니스 로직의 구현을 경험
+
+
+
+#### 강의에서 사용한 인텔리제이 추가 다운로드 플러그인 (기능)
+
+- CamelCase(3.0.12)
+- GitToolBox(212.9.0)
+- JPA Buddy(2022.2.4-221)
+- Key Promoter X (2022.1.2)
+- Presentation Assistant(1.0.9)
+- Ideolog(203.0.30.0)
+- Spring Boot Assistant(0.14.0)
+
+
+
+#### 강의에서 사용한 인텔리제이 추가 다운로드 플러그인 (색상/테마)
+
+- ANSI Highlighter(1.2.4) -> 이후 유료 플러그인으로 바뀜
+- Atom Material Icons(64.0.0)
+- Grep Console (12,12,211,6693.0)
+- One Dark theme(5.6.0)
+
+
+
+#### 데스트와 배포 - 고객에게 제품을 보여주고 성과를 확인하는 순간
+
+- 테스트
+  - 개발 요구사항이 빠짐 없이 모두 구현되었는가 (일이 끝났는가)
+  - 구현된 요구사항이 오류 없이 동작하는가 (일이 잘 끝났는가)
+- 배포
+  - 깃헙 릴리즈 작성
+  - 클라우드 서버에 배포 (헤로쿠)
+
+
+
+#### 이 게시판 만들기 프로젝트에서 해볼 테스트와 배포는...
+
+- 테스트 
+  - JUnit 5.8.2
+  - 각종 테스트 라이브러리 (Mockito, AssertJ 등)
+  - 스프링 부트 슬라이스 테스트 테크닉
+  - 깃헙: 테스트/빌드 자동화
+- 배포
+  - 클라우드 서버에 배포 (Heroku)
+    - 최근 보안 이슈로 일부 자동화 기능을 이용하지 못할 수 있음
+    - Heroku를 사용하지 못할 경우, 로컬에서 실행
+  - 깃헙: Heroku 배포 자동화
+
+
+
+Reference
+
+- https://www.diagrams.net/
+- https://www.heroku.com/home
+- https://junit.org/junit5/
+- https://site.mockito.org/
+- https://assertj.github.io/doc/
+
+
+
+### 프로젝트 기획 - 필요한 기술 정리하기
+
+#### 필요 세부 기술 목록을 뽑는 방법은
+
+- 미리 사용 기술을 모두 파악한 후 처음부터 프로젝트에 넣는 방법
+- 기능 하나를 만들 때마다 필요한 기술을 추가해 나가는 방법 **-> 우리가 사용할 방법**
+
+
+
+#### 예상하는 세부 기능들
+
+- 게시판, 댓글 도메인의 설계
+- 도메인 데이터를 DB 에 저장 
+- JSON API 로 데이터 제공
+- 사용자에게 웹 화면으로 서비스 제공 + 디자인 요소
+  - 게시판 페이지
+  - 게시글 페이지
+  - 로그인 페이지
+- 적절한 입출력 데이터의 검증
+- 인증 기능
+- 생산성에 도움이 되는 도구들 선택
+
+#### 세부 기능으로부터 선택을 예상하는 기술들
+
+- Java + Spring Boot 기반에서 선택
+- 웹 서비스 제공 -> Spring Web
+- 도메인의 설계와 DB 저장 -> Spring Data JPA, H2 Database, MySQL Driver
+- JSON API 로 데이터 제공 -> Rest Repositories, Rest Repositories HAL Explorer
+- 웹 화면: 강의 목표에 맞춰 서버 사이드 렌더링으로 접근 -> 템플릿 엔진 -> Thymeleaf
+- 디자인 요소 -> Bootstrap 5.2
+- 적절한 입출력 데이터의 검증 -> Validation
+- 인증 기능 -> Spring Security
+- 생산성 -> Lombok, Spring Boot DevTools, Spring Boot Actuator
+
+Reference
+
+- https://start.spring.io/
+
+
+
+### 깃헙 프로젝트와 이슈 정리하기
+
+#### 깃 이슈
+
+마일스톤 알아보자
+
+14분 부터 보기
+
+다 써 보고(강의 끝나고) 정리를 할까 지금 정리를 할까?
+
+아니면 지금 정리하고 나중에 다시 업데이트를 할까?
+
+=> 써보고 가상의 팀원을 만들어서 알려준다고 생각하고 만들자!!!
+
+
+
+#### 깃 브랜치 전략 세우기
+
+깃 브랜치를 운영하는 방법론
+
+- gitflow: master, develop, feature, release, hotfix 브랜치를 설정하고 운영하는 방식
+- github flow: main(master), feature 브랜치만으로 운영하는 방식
+
+
+
+브랜치 전략을 세우는 이유와 요령
+
+- 하나의 프로젝트 소스코드를 여러 개발자가 다루면서 발생하는 각종 부작용을 해결하자
+- 개발 협업을 원활하게 하기 위한 약속
+- 전략을 세울 때 고려할 수 있는 요소들
+  - 이 브랜치는 제품으로 내보낼 수 있는가?
+  - 이 브랜치는 빌드 실패를 허용하는가?
+  - 이 브랜치는 테스트 실패를 허용하는가?
+  - 이 브랜치는 임시로 운영하는가? 유지하지 않고 수시로 삭제하는가?
+
+Reference
+
+- https://github.com/nvie/gitflow
+- https://docs.github.com/en/get-started/quickstart/github-flow
+
+
+
+### 유즈 케이스 작성하기
+
+Lucidchart => 유료 일반적 사용(강의 X)
+
+
+
+github autolink references
+
+https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls
+
+
+
+설정에서 브랜치 삭제 자동으로 가능하게 설정 가능
+
+
+
+git automatically close issue 공부
+
+
+
+
+
+
+
+
+
+Cannot load settings from file 'C:\Users\dlrke\OneDrive\바탕 화면\Kraken\fastcampus-project-board\.idea\modules.xml': Unexpected end element in prolog: malformed XML document, expected root element at [row,col {unknown-source}]: [1,7] File content will be recreated
